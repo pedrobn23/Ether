@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{amssymb, amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage[bottom]{footmisc}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage[hidelinks]{hyperref} 
+
+% Meta
+\title{Título}
+\author{Pedro Bonilla Nadal\\Ana Peña Arnedo}
+\date{\today}
+
+% Custom
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\setlength\parindent{0pt}
+\definecolor{Light}{gray}{.90}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  
+  \vspace{10cm}
+  \includegraphics[width=0.6\textwidth]{portada.png}\par\vspace{1cm}
+  {\scshape\large Fundamentos de Redes \par} \vspace{1cm}
+  \vspace{0.4cm}
+  {\large\itshape Memoria de la exposición\\}
+  \vspace{0.6cm}
+  {\large\itshape  Pedro Bonilla Nadal\\Ana Peña Arnedo \par} \vspace{1.00cm}
+
+  \vfill
+  % Bottom of the page
+  {\large \today\par}
+
+\end{titlepage}
+\begin{center}
+	\includegraphics[scale=.42]{logo.png}
+\end{center}
+\section{Introducción}
+
+Hoy en día, la información es todo. Las grandes compañias de internet han alcanzado un modelo  de negocio en el cual no tienen que exigirte dinero para conseguir beneficios. Estos te cobran por una aceptación de ceder tu información para traficar con ella. \\
+
+Sin embargo, en la actualidad, con el objetivo de mantener un sistema de comercio que no tenga que ser mantenido por un organismo que, por lo tanto mantenga poder sobre sus usuarios. Este tipo de comercio 'tradicional' \ incluye organizaciones como, por ejemplo, amazon, que facilita la compra-venta respaldada por una compañía, o los bancos centrales, los cuales mantienen las divisas y son los responsables del cuidado y mantención de la divisa. Como sabemos que una compañia esté al cargo del cuidado del sistema, (es decir, que tenga un sistema centralizado) tiene una serie de beneficios e inconvenientes. \\
+
+Por un lado el sistema centralizado con control por una compañía, como la contratación de especialistas para almacenar y proteger la seguridad, y reduce los tiempos de almacenamiento y actualización del sistema. \\
+
+Por otro lado, donde hay una ventaja, hay un inconveniente. Como se ha podido ver en alguna ocasion\footnotemark esta organización habilita a grandes compañías y estados a filtrar, robar o modificar a información sensible  de los usuarios. Esta vulnerabilidad ha llegado a ser calificada como el 'pecado original'\ de internet, pues este siempre intento ser una plataforma de caracter descentralizado.\\
+
+	Satoshi Nakamoto inció en 2008 el desarrollo de bitcoin. Este hecho desencadenaria un desarrollo increible en el area de las divisas con centralizadas, es decir un sistema monetario que no necesitase de un sistema bancario o de un valor predeterminado. También sorprendió mucho a la comunidad la aplicación de la tecnología de la cadena de bloques, como una herramienta basada en la distribución del conseno. A raiz de estas surgieron otras teconologías basadas en la cadena de bloques, como namecoin, añadiendo. Lo que ethereum pretende es proveer una cadena de bloques con un leguanje turing completo integrado que pueda ser usado para el desarrollo de contratos inteligentes, permitiendo a los usarios la ceanción de proyectos solo escribiendo la logica de estos en unas pocas lineas de código. Algunos de estos poryectos, sacados del la propia web \url{ethereum.org} serían la creación de un crowdfounding que no sea basado en la confianza si no en un contrato que almacenará el dinero de los contribuyentes, una organización autónoma democrática.\\
+	
+	En resumen, ethereum intenta es generar un 'computador-global' que descentralice el ahora predominante sistema de cliente-servidor y generar
+	
+	
+\footnotetext{\url{https://www.theguardian.com/world/2013/jun/06/nsa-phone-records-verizon-court-order}}
+
+\end{document}
