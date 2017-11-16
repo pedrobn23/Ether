@@ -12,10 +12,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{xcolor}
 \usepackage{soul}
-\usepackage{graphicx}
+\usepackage{graphicx,wrapfig,lipsum}
 \usepackage[bottom]{footmisc}
 \usepackage{amsthm}
-\usepackage{color}
 \usepackage[hidelinks]{hyperref} 
 
 % Meta
@@ -49,21 +48,103 @@
 \begin{center}
 	\includegraphics[scale=.42]{logo.png}
 \end{center}
-\section{Introducción}
 
+\section{Introducción}
 Hoy en día, la información es todo. Las grandes compañias de internet han alcanzado un modelo  de negocio en el cual no tienen que exigirte dinero para conseguir beneficios. Estos te cobran por una aceptación de ceder tu información para traficar con ella. \\
 
-Sin embargo, en la actualidad, con el objetivo de mantener un sistema de comercio que no tenga que ser mantenido por un organismo que, por lo tanto mantenga poder sobre sus usuarios. Este tipo de comercio 'tradicional' \ incluye organizaciones como, por ejemplo, amazon, que facilita la compra-venta respaldada por una compañía, o los bancos centrales, los cuales mantienen las divisas y son los responsables del cuidado y mantención de la divisa. Como sabemos que una compañia esté al cargo del cuidado del sistema, (es decir, que tenga un sistema centralizado) tiene una serie de beneficios e inconvenientes. \\
+En la actualidad, con el objetivo de mantener un sistema de comercio que no tenga que ser mantenido por un organismo que, por lo tanto mantenga poder sobre sus usuarios. Este tipo de comercio 'tradicional' \ incluye organizaciones como, por ejemplo, amazon, que facilita la compra-venta respaldada por una compañía, o los bancos centrales, los cuales mantienen las divisas y son los responsables del cuidado y mantención de la divisa. Como sabemos que una compañia esté al cargo del cuidado del sistema, (es decir, que tenga un sistema centralizado) tiene una serie de beneficios e inconvenientes. \\
 
 Por un lado el sistema centralizado con control por una compañía, como la contratación de especialistas para almacenar y proteger la seguridad, y reduce los tiempos de almacenamiento y actualización del sistema. \\
 
 Por otro lado, donde hay una ventaja, hay un inconveniente. Como se ha podido ver en alguna ocasion\footnotemark esta organización habilita a grandes compañías y estados a filtrar, robar o modificar a información sensible  de los usuarios. Esta vulnerabilidad ha llegado a ser calificada como el 'pecado original'\ de internet, pues este siempre intento ser una plataforma de caracter descentralizado.\\
 
 	Satoshi Nakamoto inció en 2008 el desarrollo de bitcoin. Este hecho desencadenaria un desarrollo increible en el area de las divisas con centralizadas, es decir un sistema monetario que no necesitase de un sistema bancario o de un valor predeterminado. También sorprendió mucho a la comunidad la aplicación de la tecnología de la cadena de bloques, como una herramienta basada en la distribución del conseno. A raiz de estas surgieron otras teconologías basadas en la cadena de bloques, como namecoin, añadiendo. Lo que ethereum pretende es proveer una cadena de bloques con un leguanje turing completo integrado que pueda ser usado para el desarrollo de contratos inteligentes, permitiendo a los usarios la ceanción de proyectos solo escribiendo la logica de estos en unas pocas lineas de código. Algunos de estos poryectos, sacados del la propia web \url{ethereum.org} serían la creación de un crowdfounding que no sea basado en la confianza si no en un contrato que almacenará el dinero de los contribuyentes, una organización autónoma democrática.\\
-	
-	En resumen, ethereum intenta es generar un 'computador-global' que descentralice el ahora predominante sistema de cliente-servidor y generar
-	
-	
+
 \footnotetext{\url{https://www.theguardian.com/world/2013/jun/06/nsa-phone-records-verizon-court-order}}
 
+En resumen, nuestra moneda lo que intenta es crear un 'ordenador  global' que descentralice el actual cliente-servidor. Con Ethereum en lugar de tener un servidor tendríamos un conjunto de nodos, almacenados por voluntarios alrededor del mundo . Sobre este sistema, la comunidad podrá competir por ofrecer servicios, además de consumirlos.
+
+
+Ejemplifiquemos la diferencia: navegar por una app-store cualquiera nos ofrecerá una serie de aplicaciones en las cuales contactaremos con un servidor que nos proverá del servicio, generalmente gestionado por un tercero no relacionado (de manera directa) con la transacción.\\
+
+Ethereum, si todo funciona, devolvería la propiedad de la información a su dueño, de modo que solo el usuario puede modificar la información, y no ninguna entidad externa.\\
+
+
+
+\section{Ethereum\\}
+
+
+\subsection{Historia.}
+	En 2012, un joven de 19 años propuso una nueva plataforma, con el objetivo de trasnfomar por entero internet. Vitalik Buterin, un programador de Toronto empezó su investigación en la cadena de bloques en 2011. Co-fundó el portal web Bitcoin Magazine y trabajó para compañías de la materia. En el camino pensó en una plataforma que fuera más allá de las posibilidades del bitcoin.\\
+	
+	Con esta idea nació ethereum, una plataforma para la creación de contratos inteligentes (smart contract). Después de publicar en 2014 el white paper, otros desarrolladores se unieron al proyecto. \\
+
+	Para lanzar el poryecto se inició un crowdfounding en julio de 2014, donde los participantes compraban ether \textcolor{red}{vinculo} . Después de reunir más de 18 millones de dolares, se inició y en 2015 se lanzó una plataforma, no demasiado user-friendly, pero con comandos el linea que permitía la creación de aplicaciones descentralizadas.\\
+
+Este nuevo tipo de contratos caló entre el público llamando la atención de gigantes tecnológicos como IBM y gran cantidad de desarrolladores. El dinero recaudado inicialmente está gestionado por Etherum foundaion\footnotemark, una compañía sin animo de lucro ubicada en Suiza.	\\
+
+\footnotetext{\url{https://www.ethereum.org/foundation}}
+
+\subsubsection{Hardfork y el cisma de ethereum}
+\begin{wrapfigure}{r}{5.5cm}
+\caption{\ \ }
+\includegraphics[width=5.5cm]{classic1.png}
+\end{wrapfigure} 
+%------------------------------------------
+En 2016 una organización autonoma descentralizada llamada The DAO, un conjunto de contratos inteligentes reunieron un total de USD \$150 millones en una crowdsale. Al final DAO esplotó cuando en junio USD \$50 millones en Ether fueron reclamados de manera anonima. El suceso inició un debate sobre si de debía hacer un hard-frok \textcolor{red}{vinculo} y como resutado de la disputa, la red se dividió en dos: Ethereum, el objetivo de este trabajo,que continuó la cadena modificada, y Ethereum Classic, que continuó la cadena original. Desde entonces se generó un conflicto entre ambas comunidades.\\
+
+
+\subsection{Funcionamiento.\\} 
+Una vez sabemos lo que es ethereum, profundizamos en el funcionamiento de la plataforma.
+Al usar ethereum, la ‘app’ no requiere ninguna entidad para almacenar y controlar sus datos. Para conseguirlo, ethereum hace uso del protocolo de bitcoin y su diseño de la cadena de bloques, aunque lo ajusta de manera que puede respaldar aplicaciones además del dinero. Sin embargo, ethereum persigue abstraerse del diseño de bitcoin con el fin de que los desaprobadores puedan crear aplicaciones o acuerdos que incluyan medidas adicionales, nuevas normas de propiedad, formatos alternativos de transacciones o diferentes maneras de transferir estados.\\
+
+El objetivo del lenguaje de programación ‘Turing-completo’ de ethereum es permitir a los
+desarrolladores escribir más programas (que los que permite la linea de comandos de bitcoin) en los que las transacciones en la cadena de bloques puedan gobernar y automatizar resultados específicos. Tengamos en cuenta que un lenguaj turing-completo es capaz de generar (en teoría) los mismos programas que son desarrollables c++. Esta flexibilidad que ofrece ethereum es  la innovacioń fundamental de ethereum sobre otras plataformas basadas en protocolo bitcoin.\\
+
+\subsubsection{Bitcoin como sistema de transición de estados}
+
+
+\subsubsection{Cadena de Bloques de Ethereum}
+La estructura de la cadena de bloques de ethereum es muy similar a la de bitcoin, dado que se
+trata de un registro compartido de la historia de transacciones completa. Cada nodo en la red
+almacena una copia de este historial.
+La gran diferencia con ethereum es que sus nodos almacenan también el estado más reciente de
+cada contrato inteligente, además de todas las transacciones de ether.
+Para cada aplicación de ethereum, la red tiene que mantener un seguimiento del ‘estado’ o
+información actual de todas estas aplicaciones, incluyendo el saldo de cada usuario, todo el
+código del contrato inteligente y dónde se almacena todo.
+Bitcoin usa salidas de transacción no utilizadas para rastrear quién tiene cuánto bitcoin.
+Aunque suena complejo, la idea es bastante simple. Cada vez que se hace una transacción de
+bitcoin, la red ‘rompe’ la cantidad total como si fuera dinero impreso, emitiendo bitcoins de vuelta
+de una forma que hace que la información manejada se comporte como las monedas o cambio
+físico.
+Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio,
+que se clasifican en ‘gastadas’ o ‘no gastadas’.
+Ethereum, por otro lado, utiliza cuentas.
+Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser
+portados (por así decirlo) a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo
+que podría llamarse una relación continua.Máquina Virtual de Ethereum
+Con ethereum, cada vez que se usa un programa, una red de miles de computadores lo procesa.
+Los contratos escritos en un lenguaje de programación específico de contrato inteligente se
+compilan en ‘bytecode’, lo que una prestación llamada ‘ethereum virtual machine’ (EVM) puede
+leer y ejecutar.
+Todos los nodos ejecutan este contrato usando sus EVMs.
+Cada vez que un usuario realiza alguna acción, todos los nodos de la red tienen que estar de
+acuerdo en que ese cambio se ha efectuado.
+El objetivo aquí es que la red de mineros y nodos tomen la responsabilidad de transferir el cambio
+de estado a estado, en lugar de cualquier autoridad como PayPal o un banco. Los mineros de
+bitcoin validan el cambio de propiedad de bitcoins de una persona a otra. La EVM ejecuta un
+contrato con las reglas que el desarrollador programó inicialmente.
+El cálculo real en la EVM se consigue mediante un lenguaje ‘bytecode’ basado en pilas, pero los
+desarrolladores pueden escribir contratos inteligentes en lenguajes de alto nivel como Solidity o
+Serpent, más fáciles de leer y escribir para las personas.
+Los mineros son los que evitan un mal comportamiento. Por ejemplo, deben asegurarse de que
+nadie gasta dinero más de una vez, y rechazar contratos inteligentes que no se han pagado.
+Existen varios miles de nodos de ethereum ahí fuera, y cada uno de ellos está compilando y
+ejecutando el mismo código.
+Podemos pensar que todo esto tiene un coste mucho mayor al de cálculos ordinarios, lo cual es
+cierto. Por ello la red solo debe usarse para casos de uso particular.
+El tutorial oficial de desarrollo de ethereum reconoce esta ineficacia, declarando:
+"A grandes rasgos, una buena heurística para usar es que no podrás hacer nada en la EVM que
+no puedas hacer en un teléfono inteligente de 1999".
 \end{document}
