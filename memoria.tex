@@ -16,6 +16,9 @@
 \usepackage[bottom]{footmisc}
 \usepackage{amsthm}
 \usepackage[hidelinks]{hyperref} 
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\newcommand{\var}[1]{{\ttfamily#1}}% variable
 
 % Meta
 \title{Título}
@@ -112,7 +115,8 @@ La estructura de la cadena de bloques de ethereum es muy similar a la de bitcoin
 
 La gran diferencia con ethereum es que sus nodos almacenan también el estado más reciente de cada contrato inteligente, además de todas las transacciones de ether.
 Para cada aplicación de ethereum, la red tiene que mantener un seguimiento del ‘estado’ o
-información actual de todas estas aplicaciones, incluyendo el saldo de cada usuario, todo el código del contrato inteligente y dónde se almacena todo. Bitcoin usa salidas de transacción no utilizadas para rastrear quién tiene cuánto bitcoin. Aunque suena complejo, la idea es bastante simple. Cada vez que se hace una transacción de
+información actual de todas estas aplicaciones, incluyendo el saldo de cada usuario, todo el código del contrato inteligente y dónde se almacena todo. Bitcoin usa salidas de transacción no utilizadas para rastrear quién tiene cuánto bitcoin.
+ Aunque suena complejo, la idea es bastante simple. Cada vez que se hace una transacción de
 bitcoin, la red ‘rompe’ la cantidad total como si fuera dinero impreso, emitiendo bitcoins de vuelta de una forma que hace que la información manejada se comporte como las monedas o cambio físico.\\
 
 Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio, que se clasifican en ‘gastadas’ o ‘no gastadas’. Ethereum, por otro lado, utiliza cuentas. Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser portados (por así decirlo) a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo que podría llamarse una relación continua. 
@@ -128,25 +132,119 @@ nadie gasta dinero más de una vez, y rechazar contratos inteligentes que no se 
 
 Podemos pensar que todo esto tiene un coste mucho mayor al de cálculos ordinarios, lo cual es cierto. Por ello la red solo debe usarse para casos de uso particular. El tutorial oficial de desarrollo de ethereum reconoce esta ineficacia, declarando:
 "A grandes rasgos, una buena heurística para usar es que no podrás hacer nada en la EVM que no puedas hacer en un teléfono inteligente de 1999".\\
+
+
 \subsubsection{mensajes, transacciones y estado de transición de ethereum}
 
-leer y resumir secciones del whitepaper
+Los mensajes en ethereum son parecidos de cierto modo a las transacciones de en otros  sistemas de cadena de bloques, pero  con algunas caracteristicas llamativas. Un mensaje puede ser creado tanto por una entidad externa como por un contrato, los mensajes pueden contener datos o, si el mensaje es recibido por un contrato, este tiene la opcion de responder. Esto implica que un mensaje en etherum puede toar el aspecto de función.\\
+
+El termino transacción es usado en  ethereum para referirse a un paquete firado que coniene un mensaje para ser enviado por una cuenta externa. Las transacciones serian el recipiente del mensaje, una firma identificando el remitente, la cantidad de ether que mandar, y además los dos valores importantes de GRAPRICE y STARTGAS.\\
+
+
+ In order to prevent exponential blowup and infinite loops in code, each transaction is required to set
+a limit to how many computational steps of code execution it can spawn, including both the initial message
+and any additional messages that get spawned during execution. STARTGAS is this limit, and GASPRICE is
+the fee to pay to the miner per computational step. If transaction execution "runs out of gas", all state changes
+revert - except for the payment of the fees, and if transaction execution halts with some gas remaining then
+the remaining portion of the fees is refunded to the sender. There is also a separate transaction type, and
+corresponding message type, for creating a contract; the address of a contract is calculated based on the
+hash of the account nonce and transaction data.
+An important consequence of the message mechanism is the "first class citizen" property of Ethereum - the
+idea that contracts have equivalent powers to external accounts, including the ability to send message and
+create other contracts. This allows contracts to simultaneously serve many different roles: for example, one
+might have a member of a decentralized organization (a contract) be an escrow account (another contract)
+between an paranoid individual employing custom quantum-proof Lamport signatures (a third contract) and
+a co-signing entity which itself uses an account with five keys for security (a fourth contract). The strength of
+the Ethereum platform is that the decentralized organization and the escrow contract do not need to care
+about what kind of account each party to the contract is.
 
 
 \subsubsection{Contratos inteligentes.}
 
-\url{https://en.wikipedia.org/wiki/Smart_contract}
+Un contrato inteligente (en inglés Smart contract) es un programa informático que facilita, asegura, hace cumplir y ejecuta acuerdos registrados entre dos o más partes (por ejemplo personas u organizaciones). Como tales ellos les ayudarían en la negociación y definición de tales acuerdos que causarán que ciertas acciones sucedan como resultado de que se cumplan una serie de condiciones específicas.
+
+Un contrato inteligente es un programa que vive en un sistema no controlado por ninguna de las partes, o sus agentes, y que ejecuta un contrato automático el cual funciona como una sentencia if de cualquier otro programa de ordenador. Con la diferencia de que se realiza de una manera que interactúa con activos reales. Cuando se dispara una condición pre-programada, no sujeta a ningún tipo de valoración humana, el contrato inteligente ejecuta la cláusula contractual correspondiente.
+
+Tienen como objetivo brindar una seguridad superior a la ley de contrato tradicional y reducir costos de transacción asociados a la contratación. La transferencia de valor digital mediante un sistema que no requiere confianza abre la puerta a nuevas aplicaciones que pueden hacer uso de los contratos inteligentes, como es el caso de ethereum.
+
+It’s worth noting that bitcoin was the first to support basic smart contracts in the sense that the network can transfer value from one person to another. The network of nodes will only validate transactions if certain conditions are met.
+
+But, bitcoin is limited to the currency use case.
+
+By contrast, ethereum replaces bitcoin's more restrictive language (a scripting language of a hundred or so scripts) and replaces it with a language that allows developers to write their own programs.
+
+Ethereum allows developers to program their own smart contracts, or 'autonomous agents', as the ethereum white paper calls them. The language is 'Turing-complete', meaning it supports a broader set of computational instructions.
+
+Smart contracts can:
+
+    Function as 'multi-signature' accounts, so that funds are spent only when a required percentage of people agree
+    Manage agreements between users, say, if one buys insurance from the other
+    Provide utility to other contracts (similar to how a software library works)
+    Store information about an application, such as domain registration information or membership records.
+
+Strength in numbers
+
+Extrapolating that last point, smart contracts are likely to need assistance from other smart contracts.
+
+When someone places a simple bet on the temperature on a hot summer day, it might trigger a sequence of contracts under the hood.
+
+One contract would use outside data to determine the weather, and another contract could settle the bet based on the information it received from the first contract when the conditions are met.
+
+Running each contract requires ether transaction fees, which depend on the amount of computational power required.
 \textcolor{red}{Meter fotito por aquí para amenizar la lectura}
 
 \subsubsection{Minería}
 \url{https://www.coindesk.com/information/ethereum-mining-works/}
+\url{https://www.coindesk.com/information/how-to-mine-ethereum/}
+
+\subsubsection{Hardfork}
+\url{https://es.cointelegraph.com/news/hard-fork-y-soft-fork-en-qu\%C3\%A9-consisten-y-cu\%C3\%A1les-son-sus-diferencias}
+
 
 \section {Aplicaciones.}
+En general, hay tres tipo de aplicaciones montadas encima de ethereum. La primera categoría es aplicaciones de financiación, las cuales habilitan una vía más amplia de gestionar los contratos. La segunda categoría son aplicaciones semifinancieras,donde el dinero está involucrado pero hay una gran parte de importancia en valores no monetarios. Por último estarían las plataformas para organizaciones de gobieron descentralizado y voto, no monetarias en ningún sentido.
 
-\subsection{Token Systems}
-\subsection{Financial derivatives}
-\subsection{Identity and Reputation Systems}
+\subsection{Sistemas de Token.}
+
+Los sistemas de tokens basados en cande de bloques tienen multitud de aplicaciones, desde representar alguna divisa o materia relacionada con el mundo real como el precio del venta de oro o intercambio de USD. Otros usos serían tokens en relación a conceptos como propiedad intelectual o sistemas no relacionados en ningún punto, no financieros en ningún aspecto. \\
+
+Los sistemas de token son muy fáciles de implementar con ethereum. El punto clave para entender el funcionamiento es darse cuenta de que cualquier sistema de token es, fundamentalmente, una base de datos con una operación: Quita $x$ unidades a $A$ y dáselas a $B$, con condición de que:
+\begin{itemize}
+	\item $A$ tiene al mmenos $X$ unidades antes de la transacción.
+	\item La transacción está aprobada por $A$. 
+\end{itemize}
+
+Todo lo restante sería implementar esta lógica en un contrato. Un código básico sería:\\
+
+    
+\begin{algorithm}
+  \caption{Contrato de Tokens.}\label{token}
+  \begin{algorithmic}[1]
+    \Procedure{Token}{$msg, contract$}			\Comment{msg contiene la información de la comunicación}\\ \Comment{contract contiene información del contrato}
+    
+    \State from = $msg$.sender
+	\State to = $msg$.data[0]
+	\State value = $msg$.data[1]
+    \If{contract.storage[from] $>=$ value}
+		\State contract.storage[from] = contract.storage[from] ­ value
+		\State contract.storage[to] = contract.storage[to] + value
+    \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+Esto sería una implementación en pseudo-código de la lógica básica del sistema bancario ya descrito.
+
+
+\subsection{Sistema de comprobación de identidad y reputación.}
+
+INVESTIGAR Y DESARROLLAR
+
 \subsection{Decentralized File Storage}
+
+En el último tiempo han surgido..
+
+
 \subsection{Decentralized Autonomous Organizations}
 
 \section{Particularidades.}
