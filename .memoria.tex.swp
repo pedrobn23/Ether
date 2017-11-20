@@ -143,17 +143,9 @@ Los mensajes en ethereum son parecidos de cierto modo a las transacciones de en 
 
 El termino transacción es usado en  ethereum para referirse a un paquete firado que coniene un mensaje para ser enviado por una cuenta externa. Las transacciones serian el recipiente del mensaje, una firma identificando el remitente, la cantidad de ether que mandar, y además los dos valores importantes de Gasprice y Startgas.\\
 
-Para prevenir el uso de bucles infinitos, cada transacción requiere marcar cuantos pasos de computación pueden ser realizados. Startgas es el límite, y Gasprice es lacuotaa pagar al minero por iteración. Si la transacción se queda sin "gas" todos los cambios de estado en la cadena se revierten. Si llega a un halts con algun gas restante, este se le envia al contratante. 
+Para prevenir el uso de bucles infinitos, cada transacción requiere marcar cuantos pasos de computación pueden ser realizados. Startgas es el límite, y Gasprice es lacuotaa pagar al minero por iteración. Si la transacción se queda sin "gas" todos los cambios de estado en la cadena se revierten. Si llega a un halts con algun gas restante, este se le envia al contratante. \\
 
-Otra cosa importante de Ethreum es que 
-An important consequence of the message mechanism is the "first class citizen" property of Ethereum - the
-idea that contracts have equivalent powers to external accounts, including the ability to send message and
-create other contracts. This allows contracts to simultaneously serve many different roles: for example, one
-might have a member of a decentralized organization (a contract) be an escrow account (another contract)
-between an paranoid individual employing custom quantum-proof Lamport signatures (a third contract) and
-a co-signing entity which itself uses an account with five keys for security (a fourth contract). The strength of
-the Ethereum platform is that the decentralized organization and the escrow contract do not need to care
-about what kind of account each party to the contract is.
+Como veremos, es importante que una transacción tenga los mismos derecho que un usuario para el desarrollo conveniente de los contratos inteligentes, incluyendo la habilidad de mandar mensajes de unos a otros.\\
 
 
 \subsubsection{Contratos inteligentes.}
@@ -232,7 +224,7 @@ Todo lo restante sería implementar esta lógica en un contrato. Un código bás
 Esto sería una implementación en pseudo-código de la lógica básica del sistema bancario ya descrito.
 
 
-\subsection{Sistema de comprobación de identidad y reputación.}
+\subsection{Sistema de comprobación de identidad}
 
 INVESTIGAR Y DESARROLLAR
 
@@ -242,6 +234,7 @@ En el último tiempo han surgido..
 
 
 \subsection{Decentralized Autonomous Organizations}
+\label{sec:dao}
 
 \section{Particularidades.}
 
