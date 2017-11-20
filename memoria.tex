@@ -15,10 +15,13 @@
 \usepackage{graphicx,wrapfig,lipsum}
 \usepackage[bottom]{footmisc}
 \usepackage{amsthm}
+\usepackage{listings}
 \usepackage[hidelinks]{hyperref} 
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
 \usepackage{algorithm}% http://ctan.org/pkg/algorithms
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \newcommand{\var}[1]{{\ttfamily#1}}% variable
+
 
 % Meta
 \title{Título}
@@ -108,8 +111,61 @@ desarrolladores escribir más programas (que los que permite la linea de comando
 
 \subsubsection{Bitcoin como sistema de transición de estados}
 
-Aquí van la pagina 5 y 6 del pdf que te pasé (el whitepaper)
-\url{http://www.the-blockchain.com/docs/Ethereum_white_paper-a_next_generation_smart_contract_and_decentralized_application_platform-vitalik-buterin.pdf}
+Desde un punto de vista técnico, el ledger de Bitcoin puede verse como un sistema de
+transición de estados, donde hay un estado que consiste en el estado de propiedad de todos los bitcoins existentes además de una función de transición de estado que toma un estado y una transacción y genera un nuevo estado que es el resultado. De este modo obtendríamos un autómata, y además al haber un número finitio de bitcoin, podemos decir que es finito en teoría (aunque no en práctica, pues la cantidad de variaciones de la red es casi inabarcable).\\
+
+ En un sistema bancario estándar, por ejemplo, el estado es una hoja de balance, una transacción es una petición para mover una determinada cantidad de dinero de “A” a “B”, y la función de transición de estado reduce esa cantidad de dinero en la cuenta de “A” y la incrementa en la cuenta de “B”. Si, en primer lugar, la cuenta de “A” tiene una cantidad menor a la indicada, la función de transición de estado devuelve un error. Por lo tanto, podría definirse formalmente:
+\begin{lstlisting}
+
+APPLY( S , TX ) -> S' o ERROR
+
+\end{lstlisting}
+
+
+En el sistema bancario definido arriba:
+\begin{lstlisting}
+
+APPLY( { Ana: 50 , Pedro: 50 } , "enviar 20 de Ana a Pedro" ) 
+{ Ana: 30 , Pedro: 70 }
+
+\end{lstlisting}
+Sin embargo:
+\begin{lstlisting}
+
+APPLY( { Ana: 50 , Pedro: 50 } , "enviar 70 de Ana a Pedro" ) 
+ERROR
+
+\end{lstlisting}
+
+
+El estado en Bitcoin es la colección de todas las monedas (técnicamente, “transacciones no
+gastadas” o UTXO - “unspent transaction outputs”) que han sido creadas pero aún no se han
+gastado, con cada UTXO que tiene una denominación y un propietario (definido por una dirección
+de 20 bytes que es esencialmente una clave pública criptográfica). Una transacción contiene una
+o más entradas, y cada entrada contiene una referencia a una UTXO existente y a una firma
+criptográfica producida por la clave privada asociada con la dirección del propietario; y una o más
+salidas, cada una de las cuales contiene una nueva UTXO para añadirla al estado.
+La función de transición de estado APPLY( S , TX ) $->$S' puede definirse aproximadamente
+como sigue:
+\begin{enumerate}
+\item Para cada entrada en TX:
+i. Si la UTXO referenciada no está en S, devuelve un error.
+ii. Si la firma proporcionada no concuerda con el propietario de la UTXO, devuelve
+un error.
+\item Si el conjunto de denominaciones de toda entrada UTXO es menor que el conjunto de
+denominaciones de toda salida UTXO, devuelve un error.
+\item Devuelve S con toda entrada UTXO eliminada y toda salida UTXO añadida.
+La primera mitad del primer paso evita que los que envían transacciones gasten monedas que no
+\end{enumerate}
+existen, la segunda mitad del primer paso evita que los que envían transacciones gasten las
+monedas de otras personas, y el segundo paso impone la conservación del valor. A la hora de
+usar esto para pagos, el protocolo es como sigue. Supongamos que Ana quiere enviar 11.7 BTC a
+Pedro. Primero, Ana buscará un conjunto de UTXO disponibles que ella posea que sume un total
+de al menos 11.7 BTC. Realmente, Ana no será capaz de obtener exactamente 11.7 BTC;
+digamos que lo menos que puede obtener es 6+4+2=12. Entonces ella creará una transacción con
+esas tres entradas y dos salidas. La primera salida será 11.7 BTC con la dirección de Pedro como
+su propietario, y la segunda salida serán los restantes 0.3 BTC de “cambio”, siendo su propietaria
+la propia Ana.
 
 \subsubsection{Cadena de Bloques de Ethereum}
 La estructura de la cadena de bloques de ethereum es muy similar a la de bitcoin, dado que se trata de un registro compartido de la historia de transacciones completa. Cada nodo en la red almacena una copia de este historial.\\
