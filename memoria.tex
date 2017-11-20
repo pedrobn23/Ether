@@ -129,13 +129,13 @@ Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas l
 Con ethereum, cada vez que se usa un programa, una red de miles de computadores lo procesa. Los contratos escritos en un lenguaje de programación específico de contrato inteligente se compilan en ‘bytecode’, lo que una prestación llamada ‘ethereum virtual machine’ (EVM) puede leer y ejecutar. Todos los nodos ejecutan este contrato usando sus EVMs.  Cada vez que un usuario realiza alguna acción, todos los nodos de la red tienen que estar de acuerdo en que ese cambio se ha efectuado.
 El objetivo aquí es que la red de mineros y nodos tomen la responsabilidad de transferir el cambio de estado a estado, en lugar de cualquier autoridad como PayPal o un banco. Los mineros de bitcoin validan el cambio de propiedad de bitcoins de una persona a otra. La EVM ejecuta un  contrato con las reglas que el desarrollador programó inicialmente. \\
 
-
 El cálculo real en la EVM se consigue mediante un lenguaje ‘bytecode’ basado en pilas, pero los desarrolladores pueden escribir contratos inteligentes en lenguajes de alto nivel como Solidity o Serpent, más fáciles de leer y escribir para las personas, dado que bytecode es un lenguaje poco legible, pero mmás interpretable a un ordenador, análogo al lenguaje máquina. Los mineros son los que evitan un mal comportamiento. A diferencia de en bitcoin, la cantidad de nodos es escalable, por lo que la ausencia de mineros no será un problema a largo plazo. Por ejemplo, deben asegurarse de que
 nadie gasta dinero más de una vez, y rechazar contratos inteligentes que no se han pagado. Existen varios miles de nodos de ethereum ahí fuera, y cada uno de ellos está compilando y ejecutando el mismo código.\\
 
 Podemos pensar que todo esto tiene un coste mucho mayor al de cálculos ordinarios, lo cual es cierto. Por ello la red solo debe usarse para casos de uso particular. El tutorial oficial de desarrollo de ethereum reconoce esta ineficacia, declarando:
 "A grandes rasgos, una buena heurística para usar es que no podrás hacer nada en la EVM que no puedas hacer en un teléfono inteligente de 1999".\\
 
+Este lenguaje será fundamental para la implementación de los contratos inteligentes o samrt contract, pues es lo que permite generar los entes de funcionamiento autonómo para el desarrollo de estos.
 
 \subsubsection{mensajes, transacciones y estado de transición de ethereum}
 
@@ -166,7 +166,13 @@ Tienen como objetivo brindar una seguridad superior a la ley de contrato tradici
 
 Bitcoin inició este proceso antes, pero su uso está limitado a el uso como divisa únicamente. Sin embargo, el lenguaje turing completo de ethereum que permite a los desarrolladores escribir sus propios programas, soporta que estos desarrollen sus propios contratos inteligentes, es decir, agentes que que controlen todo el proceso del negocio.\\
 
+\begin{center}
+	
+	\includegraphics[scale=.45]{images/smart.png}
+\end{center}
+
 Estos agentes, no controlados por ninguna de las partes, son los que, (una vez aceptado el contrato) fuerzen a su cumplimiento o devuelvan una vez el contrato se ha terminado de forma fallida al estado original la cadena de bloques.\\
+
 
 Un punto importante a considerar como fallo de los contratos inteligentes es que ambas partes han de tener acceso al código del smart contract, y comprender activamente (no porque se lo haya explicado alguien) que hace y porque lo hace el programa brindado. Si estas condiciones se cumplen, y ambas partes saben lo que están aceptando su cumplimiento es obligado, de modo que si no se cumpliera el contrato no tendría ningún efecto.\\
 
