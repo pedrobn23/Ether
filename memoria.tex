@@ -83,7 +83,7 @@ Ethereum, si todo funciona, devolvería la propiedad de la información a su due
 	
 	Con esta idea nació ethereum, una plataforma para la creación de contratos inteligentes (smart contract). Después de publicar en 2014 el white paper, otros desarrolladores se unieron al proyecto. \\
 
-	Para lanzar el poryecto se inició un crowdfounding en julio de 2014, donde los participantes compraban ether \textcolor{red}{vinculo} . Después de reunir más de 18 millones de dolares, se inició y en 2015 se lanzó una plataforma, no demasiado user-friendly, pero con comandos el linea que permitía la creación de aplicaciones descentralizadas.\\
+	Para lanzar el poryecto se inició un crowdfounding en julio de 2014, donde los participantes compraban \hyperref[sec:ether]{\textbf{\underline{ether}}} . Después de reunir más de 18 millones de dolares, se inició y en 2015 se lanzó una plataforma, no demasiado user-friendly, pero con comandos el linea que permitía la creación de aplicaciones descentralizadas.\\
 
 Este nuevo tipo de contratos caló entre el público llamando la atención de gigantes tecnológicos como IBM y gran cantidad de desarrolladores. El dinero recaudado inicialmente está gestionado por Etherum foundaion\footnotemark, una compañía sin animo de lucro ubicada en Suiza.	\\
 
@@ -95,7 +95,8 @@ Este nuevo tipo de contratos caló entre el público llamando la atención de gi
 \includegraphics[width=5.5cm]{classic1.png}
 \end{wrapfigure} 
 %------------------------------------------
-En 2016 una organización autonoma descentralizada llamada The DAO, un conjunto de contratos inteligentes reunieron un total de USD \$150 millones en una crowdsale. Al final DAO esplotó cuando en junio USD \$50 millones en Ether fueron reclamados de manera anonima. El suceso inició un debate sobre si de debía hacer un hard-frok \textcolor{red}{vinculo} y como resutado de la disputa, la red se dividió en dos: Ethereum, el objetivo de este trabajo,que continuó la cadena modificada, y Ethereum Classic, que continuó la cadena original. Desde entonces se generó un conflicto entre ambas comunidades.\\
+En 2016 una organización autonoma descentralizada llamada The DAO, un conjunto de contratos inteligentes reunieron un total de USD \$150 millones en una crowdsale. Al final DAO esplotó cuando en junio USD \$50 millones en Ether fueron reclamados de manera anonima. El suceso inició un debate sobre si de debía hacer un 
+\hyperref[sec:hardfork]{\textbf{\underline{hardfork}}} y como resutado de la disputa, la red se dividió en dos: Ethereum, el objetivo de este trabajo,que continuó la cadena modificada, y Ethereum Classic, que continuó la cadena original. Desde entonces se generó un conflicto entre ambas comunidades.\\
 
 
 \subsection{Funcionamiento.\\} 
@@ -120,6 +121,8 @@ información actual de todas estas aplicaciones, incluyendo el saldo de cada usu
 bitcoin, la red ‘rompe’ la cantidad total como si fuera dinero impreso, emitiendo bitcoins de vuelta de una forma que hace que la información manejada se comporte como las monedas o cambio físico.\\
 
 Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio, que se clasifican en ‘gastadas’ o ‘no gastadas’. Ethereum, por otro lado, utiliza cuentas. Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser portados (por así decirlo) a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo que podría llamarse una relación continua. 
+
+
 \textcolor{red}{Extender}. 
 
 \subsubsection{Máquina Virtual de Ethereum}
@@ -138,17 +141,11 @@ Podemos pensar que todo esto tiene un coste mucho mayor al de cálculos ordinari
 
 Los mensajes en ethereum son parecidos de cierto modo a las transacciones de en otros  sistemas de cadena de bloques, pero  con algunas caracteristicas llamativas. Un mensaje puede ser creado tanto por una entidad externa como por un contrato, los mensajes pueden contener datos o, si el mensaje es recibido por un contrato, este tiene la opcion de responder. Esto implica que un mensaje en etherum puede toar el aspecto de función.\\
 
-El termino transacción es usado en  ethereum para referirse a un paquete firado que coniene un mensaje para ser enviado por una cuenta externa. Las transacciones serian el recipiente del mensaje, una firma identificando el remitente, la cantidad de ether que mandar, y además los dos valores importantes de GRAPRICE y STARTGAS.\\
+El termino transacción es usado en  ethereum para referirse a un paquete firado que coniene un mensaje para ser enviado por una cuenta externa. Las transacciones serian el recipiente del mensaje, una firma identificando el remitente, la cantidad de ether que mandar, y además los dos valores importantes de Gasprice y Startgas.\\
 
+Para prevenir el uso de bucles infinitos, cada transacción requiere marcar cuantos pasos de computación pueden ser realizados. Startgas es el límite, y Gasprice es lacuotaa pagar al minero por iteración. Si la transacción se queda sin "gas" todos los cambios de estado en la cadena se revierten. Si llega a un halts con algun gas restante, este se le envia al contratante. 
 
- In order to prevent exponential blowup and infinite loops in code, each transaction is required to set
-a limit to how many computational steps of code execution it can spawn, including both the initial message
-and any additional messages that get spawned during execution. STARTGAS is this limit, and GASPRICE is
-the fee to pay to the miner per computational step. If transaction execution "runs out of gas", all state changes
-revert - except for the payment of the fees, and if transaction execution halts with some gas remaining then
-the remaining portion of the fees is refunded to the sender. There is also a separate transaction type, and
-corresponding message type, for creating a contract; the address of a contract is calculated based on the
-hash of the account nonce and transaction data.
+Otra cosa importante de Ethreum es que 
 An important consequence of the message mechanism is the "first class citizen" property of Ethereum - the
 idea that contracts have equivalent powers to external accounts, including the ability to send message and
 create other contracts. This allows contracts to simultaneously serve many different roles: for example, one
@@ -198,10 +195,11 @@ Running each contract requires ether transaction fees, which depend on the amoun
 \url{https://www.coindesk.com/information/how-to-mine-ethereum/}
 
 \subsubsection{Hardfork}
+\label{sec:hardfork}
 \url{https://es.cointelegraph.com/news/hard-fork-y-soft-fork-en-qu\%C3\%A9-consisten-y-cu\%C3\%A1les-son-sus-diferencias}
 
 
-\section {Aplicaciones.}
+\section {Aplicaciones.} 
 En general, hay tres tipo de aplicaciones montadas encima de ethereum. La primera categoría es aplicaciones de financiación, las cuales habilitan una vía más amplia de gestionar los contratos. La segunda categoría son aplicaciones semifinancieras,donde el dinero está involucrado pero hay una gran parte de importancia en valores no monetarios. Por último estarían las plataformas para organizaciones de gobieron descentralizado y voto, no monetarias en ningún sentido.
 
 \subsection{Sistemas de Token.}
@@ -250,6 +248,7 @@ En el último tiempo han surgido..
 \section{Particularidades.}
 
 \subsection{Ether.}
+\label{sec:ether}
 
 AQUÍ VA LA PAGINA QUE HAY QUE TRADUCIR.	\\
 \url{https://www.coindesk.com/information/what-is-ether-ethereum-cryptocurrency/}	\\
