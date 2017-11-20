@@ -36,7 +36,7 @@
   \centering
   
   \vspace{10cm}
-  \includegraphics[width=0.6\textwidth]{portada.png}\par\vspace{1cm}
+  \includegraphics[width=0.6\textwidth]{images/portada.png}\par\vspace{1cm}
   {\scshape\large Fundamentos de Redes \par} \vspace{1cm}
   \vspace{0.4cm}
   {\large\itshape Memoria de la exposición\\}
@@ -49,7 +49,7 @@
 
 \end{titlepage}
 \begin{center}
-	\includegraphics[scale=.42]{logo.png}
+	\includegraphics[scale=.42]{images/logo.png}
 \end{center}
 
 
@@ -92,7 +92,7 @@ Este nuevo tipo de contratos caló entre el público llamando la atención de gi
 \subsubsection{Hardfork y el cisma de ethereum}
 \begin{wrapfigure}{r}{5.5cm}
 \caption{\ \ }
-\includegraphics[width=5.5cm]{classic1.png}
+\includegraphics[width=5.5cm]{images/classic1.png}
 \end{wrapfigure} 
 %------------------------------------------
 En 2016 una organización autonoma descentralizada llamada The DAO, un conjunto de contratos inteligentes reunieron un total de USD \$150 millones en una crowdsale. Al final DAO esplotó cuando en junio USD \$50 millones en Ether fueron reclamados de manera anonima. El suceso inició un debate sobre si de debía hacer un 
@@ -158,37 +158,29 @@ about what kind of account each party to the contract is.
 
 \subsubsection{Contratos inteligentes.}
 
-Un contrato inteligente (en inglés Smart contract) es un programa informático que facilita, asegura, hace cumplir y ejecuta acuerdos registrados entre dos o más partes (por ejemplo personas u organizaciones). Como tales ellos les ayudarían en la negociación y definición de tales acuerdos que causarán que ciertas acciones sucedan como resultado de que se cumplan una serie de condiciones específicas.
+Un contrato inteligente (en inglés Smart contract) es un programa informático que facilita, asegura, hace cumplir y ejecuta acuerdos registrados entre dos o más partes (por ejemplo personas u organizaciones). Como tales ellos les ayudarían en la negociación y definición de tales acuerdos que causarán que ciertas acciones sucedan como resultado de que se cumplan una serie de condiciones específicas.\\
 
-Un contrato inteligente es un programa que vive en un sistema no controlado por ninguna de las partes, o sus agentes, y que ejecuta un contrato automático el cual funciona como una sentencia if de cualquier otro programa de ordenador. Con la diferencia de que se realiza de una manera que interactúa con activos reales. Cuando se dispara una condición pre-programada, no sujeta a ningún tipo de valoración humana, el contrato inteligente ejecuta la cláusula contractual correspondiente.
+Un contrato inteligente es un programa que vive en un sistema no controlado por ninguna de las partes, o sus agentes, y que ejecuta un contrato automático el cual funciona como una sentencia if de cualquier otro programa de ordenador. Con la diferencia de que se realiza de una manera que interactúa con activos reales. Cuando se dispara una condición pre-programada, no sujeta a ningún tipo de valoración humana, el contrato inteligente ejecuta la cláusula contractual correspondiente.\\
 
-Tienen como objetivo brindar una seguridad superior a la ley de contrato tradicional y reducir costos de transacción asociados a la contratación. La transferencia de valor digital mediante un sistema que no requiere confianza abre la puerta a nuevas aplicaciones que pueden hacer uso de los contratos inteligentes, como es el caso de ethereum.
+Tienen como objetivo brindar una seguridad superior a la ley de contrato tradicional y reducir costos de transacción asociados a la contratación. La transferencia de valor digital mediante un sistema que no requiere confianza abre la puerta a nuevas aplicaciones que pueden hacer uso de los contratos inteligentes, como es el caso de ethereum.\\
 
-It’s worth noting that bitcoin was the first to support basic smart contracts in the sense that the network can transfer value from one person to another. The network of nodes will only validate transactions if certain conditions are met.
+Bitcoin inició este proceso antes, pero su uso está limitado a el uso como divisa únicamente. Sin embargo, el lenguaje turing completo de ethereum que permite a los desarrolladores escribir sus propios programas, soporta que estos desarrollen sus propios contratos inteligentes, es decir, agentes que que controlen todo el proceso del negocio.\\
 
-But, bitcoin is limited to the currency use case.
+Estos agentes, no controlados por ninguna de las partes, son los que, (una vez aceptado el contrato) fuerzen a su cumplimiento o devuelvan una vez el contrato se ha terminado de forma fallida al estado original la cadena de bloques.\\
 
-By contrast, ethereum replaces bitcoin's more restrictive language (a scripting language of a hundred or so scripts) and replaces it with a language that allows developers to write their own programs.
+Un punto importante a considerar como fallo de los contratos inteligentes es que ambas partes han de tener acceso al código del smart contract, y comprender activamente (no porque se lo haya explicado alguien) que hace y porque lo hace el programa brindado. Si estas condiciones se cumplen, y ambas partes saben lo que están aceptando su cumplimiento es obligado, de modo que si no se cumpliera el contrato no tendría ningún efecto.\\
 
-Ethereum allows developers to program their own smart contracts, or 'autonomous agents', as the ethereum white paper calls them. The language is 'Turing-complete', meaning it supports a broader set of computational instructions.
+Los contratos inteligente pueden, entre otras muchas cosas:
+\begin{itemize}
+	\item Sevir como un programa de firma de comunidad, en el cual los fondos se invierten solo cuando hay una mayoría prefijada de personas que aceptan la inversión. Del mismo modo este contrato podría ser reformado en el código que lo constituye cuando la misma mayoría (por ejemplo, del 80\%) lo acpeta.
+	\item Controlar acuerdos entre ususarios, por ejemplo, cuando uno contrata un seguro con el otro.
+	\item Gestionar el funcionamiento de otros contratos (recordemos que en ethereum un contrato puede realizar las mismas acciones que un usuario).
+\end{itemize}
 
-Smart contracts can:
+Pongamos un  ejemplo de este último:\\
 
-    Function as 'multi-signature' accounts, so that funds are spent only when a required percentage of people agree
-    Manage agreements between users, say, if one buys insurance from the other
-    Provide utility to other contracts (similar to how a software library works)
-    Store information about an application, such as domain registration information or membership records.
-
-Strength in numbers
-
-Extrapolating that last point, smart contracts are likely to need assistance from other smart contracts.
-
-When someone places a simple bet on the temperature on a hot summer day, it might trigger a sequence of contracts under the hood.
-
-One contract would use outside data to determine the weather, and another contract could settle the bet based on the information it received from the first contract when the conditions are met.
-
-Running each contract requires ether transaction fees, which depend on the amount of computational power required.
-\textcolor{red}{Meter fotito por aquí para amenizar la lectura}
+Cuando en una compañía una mayoría acepte bajar la temperatura del AC, otro contrato comproabría la previsión meteorológica para ver si está acción debe tener caracter permanente, y otro contactaría con la base de datos para enviar la información recogida en los anteriores a la base de datos.
+transaction fees, which depend on the amount of computational power required.
 
 \subsubsection{Minería}
 \url{https://www.coindesk.com/information/ethereum-mining-works/}
@@ -264,7 +256,7 @@ Esto se solvento hipotéticamente a finales de 2016 al mejorar la denfensa en es
 
 \newpage
 \begin{center}
-	\includegraphics[scale=.42]{logo.png}
+	\includegraphics[scale=.42]{images/logo.png}
 \end{center}
 
 \tableofcontents
