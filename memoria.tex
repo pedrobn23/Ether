@@ -233,11 +233,54 @@ Los contratos inteligente pueden, entre otras muchas cosas:
 
 Pongamos un  ejemplo de este último:\\
 
-Cuando en una compañía una mayoría acepte bajar la temperatura del AC, otro contrato comproabría la previsión meteorológica para ver si está acción debe tener caracter permanente, y otro contactaría con la base de datos para enviar la información recogida en los anteriores a la base de datos.
-transaction fees, which depend on the amount of computational power required.
+Cuando en una compañía una mayoría acepte bajar la temperatura del AC, otro contrato comproabría la previsión meteorológica para ver si está acción debe tener caracter permanente, y otro contactaría con la base de datos para enviar la información recogida en los anteriores a la base de datos. El precio de la transacción depende de la energía que cueste esta transacción.
 
-\subsubsection{Minería}
-\url{https://www.coindesk.com/information/ethereum-mining-works/}
+\subsubsection{Minería y Prueba de Trabajo.}
+
+La minería juega un papel importante en asegurarse como funciona ethereum, pero de forma subliminal. Además del objetivo de generar nuevos ether sin la necesidad de un banco, pero esta no es su único rol. Normalmente, es la compañía que centraliza las operaciones (como un banco) la que se asegura de mantener resgistros adecuados de los datos. Sin embargo, los sistemas de cadena de bloques introducen una nuevo modo de mantener el resgistro de acciones, cuando es la red entera la que se asegura de mantener el registro de transacciones, en lugar de un intermediario, y las anota en un registro púbilco.\\ 
+
+Aunque un sistema que no requiera de confianza, o que requiera de la mínima de esta es el objetio, alguien tiene que asegurarse de que nadie hace trampa. La minería es lo que permite realizar este registro descentralizado. \\
+
+Los mineros llegan al consenso sobre las historias de las transacciones a la vez de evitando fraude (como el doble gasto de ethers). Un problema que no había sido resuelto sin las cadenas de bloque con pruebas de trabajo.\\
+
+Recordemos que la prueba de trabajo consiste en requerir para realizar una acción de un coste extra de computación. Las primeras aplicaciones de estos sistemas eran para evitar comportamientos indeseables, cómo ataques DDoS o envío de spam. Si consigues que estas acciones malintencionadas cuesten un trabajo al atacante, desincentivas el ataque. Al menos parcialmente.\\
+
+Pero este trabajo tiene que tener una característica clave: asimetría. Debe ser difícil llevarlo a cabo (aunque factible), mientras que verificar que es real tiene que tener un coste casi nulo, para que sea posible comprobar la correción de muchos clientes con relativa facilidad.\\
+
+\url{http://www.criptomania.com/proof-of-work-vs-proof-of-stake/proof-of-work/}\\
+
+
+Although ethereum is looking into other methods of coming to consensus about the validity of transactions, mining currently holds the platform together.
+How mining works
+
+Today, ethereum's mining process is almost the same as bitcoin’s.
+
+For each block of transactions, miners use computers to repeatedly and very quickly guess answers to a puzzle until one of them wins.
+
+More specifically, the miners will run the block’s unique header metadata (including timestamp and software version) through a hash function (which will return a fixed-length, scrambled string of numbers and letters that looks random), only changing the 'nonce value', which impacts the resulting hash value.
+
+If the miner finds a hash that matches the current target, the miner will be awarded ether and broadcast the block across the network for each node to validate and add to their own copy of the ledger. If miner B finds the hash, miner A will stop work on the current block and repeat the process for the next block.
+
+It's difficult for miners to cheat at this game. There's no way to fake this work and come away with the correct puzzle answer. That's why the puzzle-solving method is called 'proof-of-work'.
+
+On the other hand, it takes almost no time for others to verify that the hash value is correct, which is exactly what each node does.
+
+Approximately every 12–15 seconds, a miner finds a block. If miners start to solve the puzzles more quickly or slowly than this, the algorithm automatically readjusts the difficulty of the problem so that miners spring back to roughly the 12-second solution time.
+
+The miners randomly earn these ether, and their profitability depends on luck and the amount of computing power they devote to it.
+
+The specific proof-of-work algorithm that ethereum uses is called 'ethash', designed to require more memory to make it harder to mine using expensive ASICs – specialized mining chips that are now the only profitable way of mining bitcoin.
+
+In a sense, ethash might have succeeded in that purpose, since dedicated ASICs aren't available to mine ethereum (at least not yet).
+
+Furthermore, since ethereum aims to transition from proof-of-work mining to 'proof of stake' – which we discuss below – buying an ASIC might not be a smart option since it likely won’t prove useful for long.
+Shift to proof of stake
+
+Ethereum might not need miners forever, though.
+
+Developers plan to ditch proof-of-work, the algorithm that the network currently uses to determine which transactions are valid and protect it from tampering, in favor of proof of stake, where the network is secured by the owners of tokens.
+
+If and when that algorithm is rolled out, proof-of-stake could be a means for achieving distributed consensus that uses fewer resources.\\
 \url{https://www.coindesk.com/information/how-to-mine-ethereum/}
 
 \subsubsection{Hardfork}
