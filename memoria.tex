@@ -243,41 +243,17 @@ Recordemos que la prueba de trabajo consiste en requerir para realizar una acci�
 
 Pero este trabajo tiene que tener una característica clave: asimetría. Debe ser difícil llevarlo a cabo (aunque factible), mientras que verificar que es real tiene que tener un coste casi nulo, para que sea posible comprobar la correción de muchos clientes con relativa facilidad.\\
 
-\url{http://www.criptomania.com/proof-of-work-vs-proof-of-stake/proof-of-work/}\\
 
+Aunque a día de hoy se sigue buscando otros métodos de consenso sobre el que validar transacciones, la minería es lo que actualmente mentiaene la credibilidad del sistema. El sistema de minería utiliza la fuerza de computacíon para ir resolviendo por fuerza bruta una prueba hasta que una de ellas acierte por casualidad. Más especificamente, los mineros ejecutaran los metadatos de la cabecera en un hash, solo cambiando un valor. Si el minero encuentra el hash con el valor que coincide con el del actual objetivo, el minero será recompensado con ether y extenderá a través de la red la propiedad de ese bloque. Cuando el minero B ve que el minero A ha encontrado el bloque que el minaba, este pasa a minar el siguiente.\\
 
-Although ethereum is looking into other methods of coming to consensus about the validity of transactions, mining currently holds the platform together.
-How mining works
+Es dificil hacer más rápido este proceso, mientras que es muy rápido comprobar que el hash ofrecido por el minero correcto. Por eso este proceso nos cumple la condiciones para ser una prueba de trabajo.\\
 
-Today, ethereum's mining process is almost the same as bitcoin’s.
+Un minero encuentra un bloque cada 12-15 segundos. Si los mineros empezasen a encontrar ether cada menos o más teimpo , el algoritmo se reajustaría para que la velocidad de la inflacción se mantenga constante.\\
 
-For each block of transactions, miners use computers to repeatedly and very quickly guess answers to a puzzle until one of them wins.
+Las ganancias de los mineros dependen tanto de la suerte como de su fuerza para computar datos. El algoritmo en especifico usado se llama \underline{ethash}. \textcolor{red}{buscar algoritmo e incluir}\\
 
-More specifically, the miners will run the block’s unique header metadata (including timestamp and software version) through a hash function (which will return a fixed-length, scrambled string of numbers and letters that looks random), only changing the 'nonce value', which impacts the resulting hash value.
-
-If the miner finds a hash that matches the current target, the miner will be awarded ether and broadcast the block across the network for each node to validate and add to their own copy of the ledger. If miner B finds the hash, miner A will stop work on the current block and repeat the process for the next block.
-
-It's difficult for miners to cheat at this game. There's no way to fake this work and come away with the correct puzzle answer. That's why the puzzle-solving method is called 'proof-of-work'.
-
-On the other hand, it takes almost no time for others to verify that the hash value is correct, which is exactly what each node does.
-
-Approximately every 12–15 seconds, a miner finds a block. If miners start to solve the puzzles more quickly or slowly than this, the algorithm automatically readjusts the difficulty of the problem so that miners spring back to roughly the 12-second solution time.
-
-The miners randomly earn these ether, and their profitability depends on luck and the amount of computing power they devote to it.
-
-The specific proof-of-work algorithm that ethereum uses is called 'ethash', designed to require more memory to make it harder to mine using expensive ASICs – specialized mining chips that are now the only profitable way of mining bitcoin.
-
-In a sense, ethash might have succeeded in that purpose, since dedicated ASICs aren't available to mine ethereum (at least not yet).
-
-Furthermore, since ethereum aims to transition from proof-of-work mining to 'proof of stake' – which we discuss below – buying an ASIC might not be a smart option since it likely won’t prove useful for long.
-Shift to proof of stake
-
-Ethereum might not need miners forever, though.
-
-Developers plan to ditch proof-of-work, the algorithm that the network currently uses to determine which transactions are valid and protect it from tampering, in favor of proof of stake, where the network is secured by the owners of tokens.
-
-If and when that algorithm is rolled out, proof-of-stake could be a means for achieving distributed consensus that uses fewer resources.\\
-\url{https://www.coindesk.com/information/how-to-mine-ethereum/}
+Se está intentando cambiar a un sistema donde no se dependa tanto de los mineros, cambiando la proof-of-work por la proof-of-stake.
+textcolor{red}{buscar proff-of-stake e incluir}\\
 
 \subsubsection{Hardfork}
 \label{sec:hardfork}
