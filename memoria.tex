@@ -186,7 +186,7 @@ Los mensajes en ethereum son parecidos de cierto modo a las transacciones de en 
 
 El termino transacción es usado en  ethereum para referirse a un paquete firado que coniene un mensaje para ser enviado por una cuenta externa. Las transacciones serian el recipiente del mensaje, una firma identificando el remitente, la cantidad de ether que mandar, y además los dos valores importantes de Gasprice y Startgas.\\
 
-Para prevenir el uso de bucles infinitos, cada transacción requiere marcar cuantos pasos de computación pueden ser realizados. Startgas es el límite, y Gasprice es lacuotaa pagar al minero por iteración. Si la transacción se queda sin "gas" todos los cambios de estado en la cadena se revierten. Si llega a un halts con algun gas restante, este se le envia al contratante. \\
+Para prevenir el uso de bucles infinitos, cada transacción requiere marcar cuantos pasos de computación pueden ser realizados. Startgas es el límite, y Gasprice es la cuota pagar al minero por iteración. Si la transacción se queda sin "gas" todos los cambios de estado en la cadena se revierten. Si llega a un halts con algun gas restante, este se le envia al contratante. El precio a pagar por esto se para en \hyperref[sec:ether]{\underline{\textbf{ether}}}.\\
 
 Como veremos, es importante que una transacción tenga los mismos derecho que un usuario para el desarrollo conveniente de los contratos inteligentes, incluyendo la habilidad de mandar mensajes de unos a otros.\\
 
@@ -260,6 +260,8 @@ Es una divergencia permanente en la Blockchain que ocurre cuando los nodos no ac
 A diferencia del ‘hard fork’, el ‘soft work’ introduce código que sí es compatible con las versiones más antiguas del programa, por lo que no es posible que existan disrupciones ya que los usuarios sólo tienen que actualizar su software para empezar a beneficiarse de las nuevas funciones. De este modo una bifurcación suave es menos conflictiva que una dura.  Tan pronto se implementa una bifurcación suave, los nodos actualizados intentan alcanzar una clara mayoría en la red y recordarnos que un porcentaje de la misma está determinado por el tamaño del bloque; de ocurrir lo contrario, el ‘soft fork’ falla y la cadena original sigue intacta. Así, de conseguir el cambio, se consigue por consenso. Esto, de todos modos lleva a la situación en la cual es posible que no se consiga una implatación del nuevoe estandar, por lo cual se discute si realmente estos son preferibles a los hardfork.
 
 \section {Aplicaciones.} 
+Para esta sección, vamos a seguir el white-paper fundacional de la criptodivisa, y a explicar las diferentes aplicaciones, entre otras muchas, que se planeaban conseguir e¡con ethereum.\\
+
 En general, hay tres tipo de aplicaciones montadas encima de ethereum. La primera categoría es aplicaciones de financiación, las cuales habilitan una vía más amplia de gestionar los contratos. La segunda categoría son aplicaciones semifinancieras,donde el dinero está involucrado pero hay una gran parte de importancia en valores no monetarios. Por último estarían las plataformas para organizaciones de gobieron descentralizado y voto, no monetarias en ningún sentido.
 
 \subsection{Sistemas de Token.}
@@ -311,9 +313,16 @@ En el último tiempo han surgido..
 \subsection{Ether.}
 \label{sec:ether}
 
-AQUÍ VA LA PAGINA QUE HAY QUE TRADUCIR.	\\
-\url{https://www.coindesk.com/information/what-is-ether-ethereum-cryptocurrency/}	\\
-si pinchas aquí te lleva.
+Como ya comentamos anteriormente, ethereum aspira a funcionar tanto como una especie de
+internet descentralizado como una app store descentralizada, apoyando así un nuevo tipo de aplicación (“dapp”) en el proceso.\\
+
+Sin embargo, aunque nadie sea dueño de ethereum, el sistema que respalda esta funcionalidad no es gratis. Mejor dicho, la red necesita el ‘ether’, una pieza única de código que puede usarse para pagar por los recursos computacionales necesarios para ejecutar una aplicación o programa. El ether no es más que la divisa utilizada en ethereum para las transacciones. Al igual que el dinero en efectivo, no necesita de terceros para efectuar o aprobar una transacción. Pero en lugar de funcionar como una moneda o pago digital, el ether busca proporcionar gas para las apps descentralizadas en la red. El ether es la herramienta necesaria para el funcionamiento de los smartcontract ya explicados,  y del mismo modo, es la recompensa que obtienen los mineros por su trabajo.\\
+
+Aunque pueda sonar complicado, podemos pensar en un ejemplo más concreto de cómo los tokens pueden potenciar la experiencia de un usuario. Pensemos en un ejemplo de un cuaderno descentralizado online. Para añadir, borrar o modificaruna nota, necesitamos pagar una cuota o tarifa de transacción en ether para conseguir que la redprocese el cambio.\\
+
+De los ether que ya existen, 60 millones fueron comprados por usuarios en una campaña de
+crowdfunding en 2014. Otros 12 millones de ether fueron destinados a la Fundación Ethereum, un grupo de investigadores y desarrolladores que trabajan en la tecnología subyacente. Cada 12 segundos, 5 ethers (ETH) son también repartidos entre los mineros que verifican transacciones en la red. Como mucho se minan dieciocho millones de ether al año.\\
+
 
 \subsection{DoS attack.}
 Dado el incidente del DAO, hemos de explicar en que consiste este ataque hecho a la red.		 \\
@@ -323,7 +332,33 @@ Esto se solvento hipotéticamente a finales de 2016 al mejorar la denfensa en es
 \subsection{Escalabilidad}
 \label{sec:escalabilidad}
 
+Una preocupación común acerca de Ethereum es el tema de la escalabilidad. Ethereum sufre el defecto de que cada transacción tiene que ser procesada por cada nodo en la red. Con Bitcoin, el tamaño de la actual cadena de bloques se basa en aproximadamente 20 GB, creciendo 1 MB por hora. Si la red de Bitcoin fuese a procesar 2000 transacciones de Visa por segundo, crecería 1 MB cada 3 segundos (1 GB por hora, 8 TB por año). Es probable que Ethereum sufra un patrón de crecimiento similar, empeorado por el hecho de que habrá muchas aplicaciones por encima de la cadena de bloques de Ethereum, en lugar de sólo una moneda como en el caso de Bitcoin, pero a su vez mejorado por el hecho de que los nodos completos de Ethereum necesitan almacenar sólo el estado en lugar del historial entero de la cadena de bloques.\\
+
+
+El problema que tiene una cadena de bloques de tamaño tan grande es el riesgo de centralización. Si el tamaño de la cadena de bloques crece hasta, por ejemplo, 100 TB, el escenario probable sería que solo un pequeño número de grandes empresas ejecutarían nodos completos, con todos los usuarios habituales usando nodos SPV (Simplified Payment Verification) ligeros. En una situación así, surge la preocupación de que los nodos completos se unan y todos acepten hacer trampa o estafar de alguna manera que les sea rentable, como por ejemplo cambiar la recompensa de bloque, autoasignarse ether, es decir, al igual que en el sistema capitalista, se cumpliría un fallo por oligopolio. Los nodos ligeros no tendrían forma alguna de detectar esto inmediatamente. Por supuesto, probablemente existiría al menos un nodo completo que fuese honesto, y después de unas horas la información sobre el fraude se volcaría a través de canales como Reddit, aunque llegados a este punto sería demasiado tarde: sería responsabilidad de los usuarios habituales organizar un esfuerzo para poner en la lista negra los bloques dados, un problema masivo y probablemente inviable de coordinación en una escala similar a la de un exitoso ataque del 51\%\\
+
+A corto plazo, Ethereum usará dos estrategias adicionales para lidiar con este problema. En primer lugar, debido a los algoritmos para minar basados en la cadena de bloques, al menos cada minero se verá obligado a ser un nodo completo, creando así un límite más bajo en cuanto al número de nodos completos. En segundo lugar y más importante, sin embargo, se incluirá una raíz de árbol de estado intermedio en la cadena de bloques después de procesar cada transacción. Aunque la validación de bloques sea centralizada, mientras que exista un nodo de verificación honesto, el problema de la centralización puede eludirse a través de un protocolo de verificación. \\ 
+Si un minero publica un bloque inválido, o bien ese bloque tendrá que estar mal
+formateado, o bien el estado S[n] será incorrecto. Dado que se sabe que S[0] es correcto, tendrá
+
+que haber un primer estado S[i] que sea incorrecto donde S[i-1] es correcto. El nodo de
+verificación proporcionaría el índice i, junto con una ‘prueba de invalidación’ que consiste en el subconjunto de nodos del árbol del usuario que necesitan procesar
+\begin{lstlisting}
+
+  APPLY( S[i-1] , TX[i] ) -> S[i]
+
+\end{lstlisting}
+
+Los nodos serían capaces de usar esos nodos para ejecutar esa parte del cálculo, y ver que el estado S[i] generado no concuerda con el S[i] previsto.\\ 
+
+Otro ataque más sofisticado involucraría a los mineros maliciosos que publicasen bloques
+incompletos, ya que la información completa ni siquiera existiría para determinar si los bloques son válidos o no. La solución a este problema es un protocolo ‘desafío-respuesta’: los nodos de verificación emiten ‘desafíos’ en forma de índices de transacción objetivo, y al recibir un nodo, un nodo ligero toma el nodo como no fiable hasta que otro nodo, ya sea por el minero o cualquier otro verificador, proporcione un subconjunto de los nodos de dicho usuario como una prueba de validez.
+
 \subsubsection{Ataque 51\%}
+
+Este tipo de ataque es bastante simple, y consistiría en tener un 51\% del poder computacional de la red. Este suceso brindaría la opción de escribir cosas maliciosas en la cadena, y extenderlas por toda la red de modo que las transacciones verdaderas quedasen ocultas por estas.
+
+
 \subsection{Minería centralizada}
 
 \newpage
