@@ -8,6 +8,8 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 
+%Para linea del tiempo
+
 % Configuración básica del tema
 \metroset{
   % tema oscuro ('dark') o claro ('light'). No tiene efecto al usar la
@@ -62,6 +64,12 @@
   \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
   \end{beamercolorbox}
 }
+
+%eye-candy; sintasix más bonita
+\newcommand{\seccion}[1]{\input{./sections/#1}}
+\newcommand{\foo}{\hspace{-2.3pt}$\bullet$ \hspace{5pt}}
+
+%Meta
 \title{Ethereum}
 \subtitle{Una nueva visión de la cadena de bloques}
 \date{\today}
@@ -78,9 +86,31 @@
 \end{frame}
 
 \section{ Introducción. }
+
+\begin{frame}{Objetivo.}
+	Tras el boom de las cadena de bloques, las criptodivisas simples quedaban cortas, y con el objetivo de dar más funcionalidad a esta tecnología, nació ethereum.
+\end{frame}
+
+
+\begin{frame}{ Historia. }
+\scalebox{1}{
+\begin{tabular}{r |@{\foo} l}
+
+2014 & WhitePaper de Vitalik Buterin. \\
+2014 & Crowdfounding.\\
+2015 & Lanzamiento de la plataforma.\\
+2016 & Desastre de la DAO.\\
+2016 & Nace Ethereum classic.\\
+2016 & Dos hard-fork más.\\
+2017 & Refuerzo de la seguridad.\\
+2017 & Prohibición de las ICO en China.\\
+2017 & Exposición de Fundamentos de Redes\\
+
+\end{tabular}}
+\end{frame}
+
 \section{ Ethereum. }
-\subsection{ Historia. }
-\subsubsection{ Hardfork y el cisma de ethereum. }
+
 \subsection{ Funcionamiento }
 
 \subsubsection{ Bitcoin como sistema de transición de estados. }
