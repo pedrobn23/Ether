@@ -165,7 +165,7 @@ Los datos almacenados en la cadena de bloques normalmente suelen ser transaccion
 La gran diferencia que ofrece ethereum es que sus nodos almacenan también el estado más reciente de cada contrato inteligente, además de todas las transacciones de ether. Para cada aplicación de ethereum, la red tiene que mantener un seguimiento del ‘estado’ o información actual de todas estas aplicaciones, incluyendo el saldo de cada usuario, todo el código del contrato inteligente y dónde se almacena todo. Bitcoin usa salidas de transacción no utilizadas para rastrear quién tiene cuánto bitcoin.
 Aunque suena complejo, la idea es bastante simple. Cada vez que se hace una transacción de bitcoin, la red ‘rompe’ la cantidad total como si fuera dinero impreso, emitiendo bitcoins de vuelta de una forma que hace que la información manejada se comporte como las monedas o cambio físico.\\
 
-Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio, que se clasifican en ‘gastadas’ o ‘no gastadas’. Ethereum, por otro lado, utiliza cuentas. Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser transferidos a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo que podría llamarse una relación continua.\\
+Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio, que se clasifican en ‘gastadas’ o ‘no gastadas’. Ethereum, por otro lado, utiliza cuentas. Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser transferidos a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo que podría llamarse una relación continua.
 
 \subsubsection{Cuentas.}
 En Ethereum, el estado esta constituido por objetos llamados cuentas, con cada cuenta formada por direcciones de 20 bytes y transiciones entre estado siendo la transferencia directa de valor e información entre cuentas. Cada cuenta puede contener hasta 4 campos:
@@ -175,18 +175,20 @@ En Ethereum, el estado esta constituido por objetos llamados cuentas, con cada c
 	\item Código de contrato: código que espeficifa el funcionamiento de una cuenta con contrato. No es obligada su existencia.
 	\item Almacenamiento: vacío por defecto, contiene información, relacionada o no, con la cuenta.
 \end{itemize}
-
 Hay dos tipos de cuentas, cuentas propias externas (externally owned account) controladas por claves privadas, y cuentas con contrato, controladas por el código del contrato. En una cuenta externa no hay código. En una cuenta dirigida cadda vez que hay un mensaje el código de la cuenta se ejecuta con derecho a reescribir esta.
 
 \subsubsection{Máquina Virtual de Ethereum}
 Con ethereum, cada vez que se usa un programa, una red de miles de computadores lo procesa. Los contratos escritos en un lenguaje de programación específico de contrato inteligente se compilan en ‘bytecode’, lo que una prestación llamada ‘ethereum virtual machine’ (EVM) puede leer y ejecutar. Todos los nodos ejecutan este contrato usando sus EVMs.  Cada vez que un usuario realiza alguna acción, todos los nodos de la red tienen que estar de acuerdo en que ese cambio se ha efectuado.
 El objetivo aquí es que la red de mineros y nodos tomen la responsabilidad de transferir el cambio de estado a estado, en lugar de cualquier autoridad como PayPal o un banco. Los mineros de bitcoin validan el cambio de propiedad de bitcoins de una persona a otra. La EVM ejecuta un  contrato con las reglas que el desarrollador programó inicialmente. \\
 
-El cálculo real en la EVM se consigue mediante un lenguaje ‘bytecode’ basado en pilas, pero los desarrolladores pueden escribir contratos inteligentes en lenguajes de alto nivel como Solidity o Serpent, más fáciles de leer y escribir para las personas, dado que bytecode es un lenguaje poco legible, pero mmás interpretable a un ordenador, análogo al lenguaje máquina. Los mineros son los que evitan un mal comportamiento. A diferencia de en bitcoin, la cantidad de nodos es escalable, por lo que la ausencia de mineros no será un problema a largo plazo. Por ejemplo, deben asegurarse de que
+El cálculo real en la EVM se consigue mediante un lenguaje ‘bytecode’ basado en pilas, pero los desarrolladores pueden escribir contratos inteligentes en lenguajes de alto nivel como Solidity o Serpent, más fáciles de leer y escribir para las personas, dado que bytecode es un lenguaje poco legible, pero más interpretable a un ordenador, análogo al lenguaje máquina. Los mineros son los que evitan un mal comportamiento. A diferencia de en bitcoin, la cantidad de nodos es escalable, por lo que la ausencia de mineros no será un problema a largo plazo. Por ejemplo, deben asegurarse de que
 nadie gasta dinero más de una vez, y rechazar contratos inteligentes que no se han pagado. Existen varios miles de nodos de ethereum ahí fuera, y cada uno de ellos está compilando y ejecutando el mismo código.\\
 
+
+\includegraphics[width=\textwidth]{./images/EVM.png}\\
+
 Podemos pensar que todo esto tiene un coste mucho mayor al de cálculos ordinarios, lo cual es cierto. Por ello la red solo debe usarse para casos de uso particular. El tutorial oficial de desarrollo de ethereum reconoce esta ineficacia, declarando:
-"A grandes rasgos, una buena heurística para usar es que no podrás hacer nada en la EVM que no puedas hacer en un teléfono inteligente de 1999".\\
+''A grandes rasgos, una buena heurística para usar es que no podrás hacer nada en la EVM que no puedas hacer en un teléfono inteligente de 1999".\\
 
 Este lenguaje será fundamental para la implementación de los contratos inteligentes o samrt contract, pues es lo que permite generar los entes de funcionamiento autonómo para el desarrollo de estos.
 
@@ -251,22 +253,20 @@ Es dificil hacer más rápido este proceso, mientras que es muy rápido comproba
 
 Un minero encuentra un bloque cada 12-15 segundos. Si los mineros empezasen a encontrar ether cada menos o más teimpo , el algoritmo se reajustaría para que la velocidad de la inflacción se mantenga constante.\\
 
-Las ganancias de los mineros dependen tanto de la suerte como de su fuerza para computar datos. El algoritmo en especifico usado se llama \underline{ethash}. \textcolor{red}{buscar algoritmo e incluir}\\
+Las ganancias de los mineros dependen tanto de la suerte como de su fuerza para computar datos. El algoritmo en especifico usado se llama \underline{ethash}. \\
 
 Se está intentando cambiar a un sistema donde no se dependa tanto de los mineros, cambiando la proof-of-work por la proof-of-stake.
 textcolor{red}{buscar proff-of-stake e incluir}\\
 
-\subsubsection{Hardfork y Sotfork}
+\subsubsection{Hardfork.}
 Pese a que al debate generado en bitcoin sobre la \hyperref[sec:escalabilidad]{\textbf{\underline{esclabilidad}}} ethereum está organizado apra que este no sea un problema relevante. En esta plataforma los incidente que han hecho que estos fork o bifurcaciones hayan tomado un papel más importante son de otro caracter como el incidente de la \hyperref[sec:dao]{\textbf{\underline{DAO}}}.\\
 
 Básicamente, el término fork hace referencia al despliegue de cambios en el código de la cadena de bloques. La bifurcaión sucede cuando el equipo detras de ethreum quiere implantr cambios en la estructura por diversos motivos. Como la cadena de bloques es una estructura de datos descentralizada, hay diferentes, esto provoca que estas situcaciones generen cadenas de bloques alternativas. Es lo que se conoce como bifurcación de la Blockchain, y aquí es donde entran en juego los conceptos de hardfork y softfork.\\
 
-\subsubsection{Hardfork.}
 \label{sec:hardfork}
-Es una divergencia permanente en la Blockchain que ocurre cuando los nodos no actualizados no pueden validar bloques creados por los nodos que se apegan a las más recientes reglas de consenso. Actualmente hay una división filosófica en la comunidad  de la cadena de bloques, entre las concepciones de lo que el activo en realidad es y aquello que debería ser. Esta discusión nace porque una comunidad con fin a ser descentraliza, no debe permitir que una compañía modifique la forma de la cadena de bloques porque ella así lo consideré pues esto solo implicaría que se está cambiando de manos la centralización, si bien en algunos casos ocurridos en el pasado, no hubo otra opción que se pudiera bajarar como solución a los conflictos. En ethereum han sucedido varios hardfork, tres en el año 2016. Ethereum se convirtió en dos cadenas de bloques, Ethereum y Ethereum Classic, en un intento de devolver a los inversores fondos desviados del desastre de DAO.
+Es una divergencia permanente en la Blockchain que ocurre cuando los nodos no actualizados no pueden validar bloques creados por los nodos que se apegan a las más recientes reglas de consenso. Actualmente hay una división filosófica en la comunidad  de la cadena de bloques, entre las concepciones de lo que el activo en realidad es y aquello que debería ser. Esta discusión nace porque una comunidad con fin a ser descentraliza, no debe permitir que una compañía modifique la forma de la cadena de bloques porque ella así lo consideré pues esto solo implicaría que se está cambiando de manos la centralización, si bien en algunos casos ocurridos en el pasado, no hubo otra opción que se pudiera bajarar como solución a los conflictos. En ethereum han sucedido varios hardfork, tres en el año 2016. Ethereum se convirtió en dos cadenas de bloques, Ethereum y Ethereum Classic, en un intento de devolver a los inversores fondos desviados del desastre de DAO.\\
 
-
-\subsubsection{Softfork.}
+\subsubsection{Sotfork.}
 A diferencia del ‘hard fork’, el ‘soft work’ introduce código que sí es compatible con las versiones más antiguas del programa, por lo que no es posible que existan disrupciones ya que los usuarios sólo tienen que actualizar su software para empezar a beneficiarse de las nuevas funciones. De este modo una bifurcación suave es menos conflictiva que una dura.  Tan pronto se implementa una bifurcación suave, los nodos actualizados intentan alcanzar una clara mayoría en la red y recordarnos que un porcentaje de la misma está determinado por el tamaño del bloque; de ocurrir lo contrario, el ‘soft fork’ falla y la cadena original sigue intacta. Así, de conseguir el cambio, se consigue por consenso. Esto, de todos modos lleva a la situación en la cual es posible que no se consiga una implatación del nuevoe estandar, por lo cual se discute si realmente estos son preferibles a los hardfork.
 
 \section {Aplicaciones.} 
