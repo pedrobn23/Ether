@@ -347,56 +347,20 @@ Una parte parte iportante del protcolo consiste en ue sea el contrato quien comp
 
 \subsection{Organizaciones descentralizadas.}
 
-El conceto de organiación descentralizada, esplicado por nuestros compañeros Dani y Andrés. Este concepto, resumido es el de una entidad que 
-The general concept of a "decentralized organization" is that of a virtual entity that has a certain set of
-members or shareholders which, perhaps with a 67\% majority, have the right to spend the entity's funds and
-modify its code. The members would collectively decide on how the organization should allocate its funds.
-Methods for allocating a DAO's funds could range from bounties, salaries to even more exotic mechanisms
-such as an internal currency to reward work. This essentially replicates the legal trappings of a traditional
-company or nonprofit but using only cryptographic blockchain technology for enforcement. So far much of the
-talk around DAOs has been around the "capitalist" model of a "decentralized autonomous corporation" (DAC)
-with dividend-receiving shareholders and tradable shares; an alternative, perhaps described as a
-"decentralized autonomous community", would have all members have an equal share in the decision
-making and require 67\% of existing members to agree to add or remove a member. The requirement that one
-person can only have one membership would then need to be enforced collectively by the group.
-A general outline for how to code a DO is as follows. The simplest design is simply a piece of self-modifying
-code that changes if two thirds of members agree on a change. Although code is theoretically immutable, one
-can easily get around this and have de-facto mutability by having chunks of the code in separate contracts,
-and having the address of which contracts to call stored in the modifiable storage. In a simple
-implementation of such a DAO contract, there would be three transaction types, distinguished by the data
-provided in the transaction:
+El conceto de organiación descentralizada, esplicado por nuestros compañeros Dani y Andrés. Este concepto, resumido es el de una entidad que tiene un cierto número de miembros que con un a mayoría,  por ejemplo del 80\%, puede administrar los fondos de la entidad y el código del contrato.\\
 
-[0,i,K,V]to register a proposal with index i to change the address at storage index K to
-value V
- [0,i] to register a vote in favor of proposal i
- [2,i] to finalize proposal i if enough votes have been made
-The contract would then have clauses for each of these. It would maintain a record of all open storage
-changes, along with a list of who voted for them. It would also have a list of all members. When any storage
-Page 23
-ethereum.orgchange gets to two thirds of members voting for it, a finalizing transaction could execute the change. A more
-sophisticated skeleton would also have built-in voting ability for features like sending a transaction, adding
-members and removing members, and may even provide for Liquid Democracy-style vote delegation (ie.
-anyone can assign someone to vote for them, and assignment is transitive so if A assigns B and B assigns C
-then C determines A's vote). This design would allow the DO to grow organically as a decentralized
-community, allowing people to eventually delegate the task of filtering out who is a member to specialists,
-although unlike in the "current system" specialists can easily pop in and out of existence over time as
-individual community members change their alignments.
-An alternative model is for a decentralized corporation, where any account can have zero or more shares, and
-two thirds of the shares are required to make a decision. A complete skeleton would involve asset
-management functionality, the ability to make an offer to buy or sell shares, and the ability to accept offers
-(preferably with an order-matching mechanism inside the contract). Delegation would also exist Liquid
-Democracy-style, generalizing the concept of a "board of directors".
-In the future, more advanced mechanisms for organizational governance may be implemented; it is at this
-point that a decentralized organization (DO) can start to be described as a decentralized autonomous
-organization (DAO). The difference between a DO and a DAO is fuzzy, but the general dividing line is whether
-the governance is generally carried out via a political-like process or an “automatic” process; a good intuitive
-test is the “no common language” criterion: can the organization still function if no two members spoke the
-same language? Clearly, a simple traditional shareholder-style corporation would fail, whereas something like
-the Bitcoin protocol would be much more likely to succeed. Robin Hanson’s futarchy, a mechanism for
-organizational governance via prediction markets, is a good example of what truly “autonomous” governance
-might look like. Note that one should not necessarily assume that all DAOs are superior to all DOs; automation
-is simply a paradigm that is likely to have have very large benefits in certain particular places and may not be
-practical in others, and many semi-DAOs are also likely to exist.
+Los métodos para repartir los fondos de una DAO van desde dar comisiones o salarios, hasta métodos más intrincados como crear una propia moneda interna para recompensar el trabajo. Esto, en esencia, replica el funcionamiento de una compañía tradicional, pero usando solo la tecnología de la cadena de bloques para asegurar su fucnionamiento. This essentially replicates the legal trappings of a traditional. Mucha gente habla del modo capitalista de una DAO, también llamada  corporación autonoma descentraliza, o por sus siglas en ingleś DAC, donde todos los miembros tendrán igual poder e decisión sbre las acciones y serán participes de los mismo dividendos. Esta compañía tendrá un código de contrato, solo modificable si se decide por una mayoría superior a la establecida por convenio (sea, 67\%).\\
+
+Una linea general de como constituir una DAO se podría hacer de manera sencilla, como por ejemplo haciendo una porción de código auto modificabl si dos tercios de los miembros están de acuerdo en modificarlo. Aunque el código es en teoría inmutable, uno puede fácilmente tener mmutabilidad de facto teniendo porciones de código en diferentes contratos y dirigiendo desde la parte modificable del principal a estos. En este diseño habría tres tipos de transacciones:
+\begin{itemize}
+	\item {[0,i,K,V]}: Registrar una proposición con índice i para cambiar la dirección del contrato K a la dirección del contrato V.
+	\item  {[v,i]}:  registrar un voto en la proposición i. El índice v marcará la intención de ese voto,   
+	\item  {[2,i]}: Finalizar la proposición si hubo suficientes votos. Esta equivaldría a votar en blanco.
+\end{itemize}
+
+El contrato tenŕia condiciones para cada una de estas y mantendría un resgistor de todas las propocisiones abiertas.  También tendría una lista de todos los miembros.\\
+
+Exisitirían otros medios más sofisticados para implementar este tipo de asociaciones, como contratos con partes decódigo especiales para tratar la permanencia o no de gente en la compañía o delegación de votos en el estilo de la democracia representativa.
 
 \section{Particularidades.}
 
