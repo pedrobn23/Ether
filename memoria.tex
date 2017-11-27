@@ -168,6 +168,17 @@ Aunque suena complejo, la idea es bastante simple. Cada vez que se hace una tran
 
 Para efectuar futuras transacciones, la red de bitcoin tiene que añadir todas las piezas de cambio, que se clasifican en ‘gastadas’ o ‘no gastadas’. Ethereum, por otro lado, utiliza cuentas. Como en fondos de cuentas bancarias, las ‘fichas’ de ether aparecen en una cartera, y pueden ser transferidos a otra cuenta. Los fondos siempre están en algún sitio, pero no tienen lo que podría llamarse una relación continua.\\
 
+\subsubsection{Cuentas.}
+En Ethereum, el estado esta constituido por objetos llamados cuentas, con cada cuenta formada por direcciones de 20 bytes y transiciones entre estado siendo la transferencia directa de valor e información entre cuentas. Cada cuenta puede contener hasta 4 campos:
+\begin{itemize}
+	\item Nonce: es utilizado para asegurarse de que cada transacción solo se puede hacer una vez.
+	\item Valor: cantidad de ether que posee la cuenta.
+	\item Código de contrato: código que espeficifa el funcionamiento de una cuenta con contrato. No es obligada su existencia.
+	\item Almacenamiento: vacío por defecto, contiene información, relacionada o no, con la cuenta.
+\end{itemize}
+
+Hay dos tipos de cuentas, cuentas propias externas (externally owned account) controladas por claves privadas, y cuentas con contrato, controladas por el código del contrato. En una cuenta externa no hay código. En una cuenta dirigida cadda vez que hay un mensaje el código de la cuenta se ejecuta con derecho a reescribir esta.
+
 \subsubsection{Máquina Virtual de Ethereum}
 Con ethereum, cada vez que se usa un programa, una red de miles de computadores lo procesa. Los contratos escritos en un lenguaje de programación específico de contrato inteligente se compilan en ‘bytecode’, lo que una prestación llamada ‘ethereum virtual machine’ (EVM) puede leer y ejecutar. Todos los nodos ejecutan este contrato usando sus EVMs.  Cada vez que un usuario realiza alguna acción, todos los nodos de la red tienen que estar de acuerdo en que ese cambio se ha efectuado.
 El objetivo aquí es que la red de mineros y nodos tomen la responsabilidad de transferir el cambio de estado a estado, en lugar de cualquier autoridad como PayPal o un banco. Los mineros de bitcoin validan el cambio de propiedad de bitcoins de una persona a otra. La EVM ejecuta un  contrato con las reglas que el desarrollador programó inicialmente. \\
@@ -296,17 +307,96 @@ Todo lo restante sería implementar esta lógica en un contrato. Un código bás
 Esto sería una implementación en pseudo-código de la lógica básica del sistema bancario ya descrito.
 
 
-\subsection{Sistema de comprobación de identidad}
+\subsection{Sistema de identidad}
+Namecoin ya intento montar sobre la cadena de bloques un sistema de registro de nombres, donde los usuarios pueden almacenar sus datos en una basee de datos pública junto con otros datos.\\
 
-INVESTIGAR Y DESARROLLAR
+El uso predominante de esto, fue un sistema parecido al DNS. mapeando dominios como "namecoin.bit" en una dirreción IP. El algoritmo básico para implementar algo del estilo en ethereum sería:
 
+\begin{algorithm}
+  \caption{Sistemas de identidad.}\label{token}
+  \begin{algorithmic}[1]
+    \Procedure{identidad}{$msg, contract$}			\Comment{msg contiene la información}
+    
+	\If { contract.storage[tx.data[0]] $\ne$ 0} 
+    \State contract.storage[tx.data[0]] = tx.data[1]
+   
+    \EndIf
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+
+
+El contrato es muy simple. Consiste en que todo dentro de la red de Ethereum es como una base de datos que puede ser añadida pero no modificada o borrada. Cualquiera puede registar un nommbre con un valor, y este nmbre se queda registrado para siempre.\\
+
+Modificaciones más sofisticada podrían tener función de consulta, dando acceso a otros contratos a ver la información, o un mecanismo que permitiera cambiar el dominio.
 \subsection{Decentralized File Storage}
 
-En el último tiempo han surgido..
+En el último tiempo han surgido un grupo de aplicaciones populares para a compartición de archivos. Aún así,  el mercado aquí es bastante ineficiente, en particular en el valle desamparado del 20-200 GB donde no hay cuentas gratis ni descuentos de compañía. \\
 
+Los contratos de ethereum podrían permitir  el desarrollo de un sistema de alacenamiento de archivos, donde usuarios podrían ganar pequeñas cantidades de dinero alquilando espacio en sus propios discos duros, reduciendo los costes de estos sistemas.\\
 
-\subsection{Decentralized Autonomous Organizations}
-\label{sec:dao}
+La parte clave sería implementar el "protocolo del Dropbox descentralizado". Este contrato funcionaría así:
+\begin{itemize}
+	\item Primero, uno parte los datos quedesea almacenar en bloques, encryptando estos para otorgar privacidad, y construye un arbol de guía (merkle tree) para estos. Cada N bloques, y o ofrece a público que quiera almacenarlo.
+	\item Los host, compiten por almacenarlo, y el primero en aprobar una prueba de verificación de que posee el archivo, se le ceden X ether.
+	\item Cuando un usuario quiere re- descargar este archivp, realiza un micropago para recuperar el archivo. El contrato no ahce pública la transacción hasta que no  se ha tranferido todo el bloque.
+	
+\end{itemize}
+
+Una parte parte iportante del protcolo consiste en ue sea el contrato quien compruebe periodicamente la conssitencia del archivo en el disco que lo aloja, para ver durante cuanto tiempo se tiene que estar pagando por este serricio, y ofreciendo de nuevo el bloque a almacenar cuand el host lo decida quitar.
+
+\subsection{Organizaciones descentralizadas.}
+
+El conceto de organiación descentralizada, esplicado por nuestros compañeros Dani y Andrés. Este concepto, resumido es el de una entidad que 
+The general concept of a "decentralized organization" is that of a virtual entity that has a certain set of
+members or shareholders which, perhaps with a 67\% majority, have the right to spend the entity's funds and
+modify its code. The members would collectively decide on how the organization should allocate its funds.
+Methods for allocating a DAO's funds could range from bounties, salaries to even more exotic mechanisms
+such as an internal currency to reward work. This essentially replicates the legal trappings of a traditional
+company or nonprofit but using only cryptographic blockchain technology for enforcement. So far much of the
+talk around DAOs has been around the "capitalist" model of a "decentralized autonomous corporation" (DAC)
+with dividend-receiving shareholders and tradable shares; an alternative, perhaps described as a
+"decentralized autonomous community", would have all members have an equal share in the decision
+making and require 67\% of existing members to agree to add or remove a member. The requirement that one
+person can only have one membership would then need to be enforced collectively by the group.
+A general outline for how to code a DO is as follows. The simplest design is simply a piece of self-modifying
+code that changes if two thirds of members agree on a change. Although code is theoretically immutable, one
+can easily get around this and have de-facto mutability by having chunks of the code in separate contracts,
+and having the address of which contracts to call stored in the modifiable storage. In a simple
+implementation of such a DAO contract, there would be three transaction types, distinguished by the data
+provided in the transaction:
+
+[0,i,K,V]to register a proposal with index i to change the address at storage index K to
+value V
+ [0,i] to register a vote in favor of proposal i
+ [2,i] to finalize proposal i if enough votes have been made
+The contract would then have clauses for each of these. It would maintain a record of all open storage
+changes, along with a list of who voted for them. It would also have a list of all members. When any storage
+Page 23
+ethereum.orgchange gets to two thirds of members voting for it, a finalizing transaction could execute the change. A more
+sophisticated skeleton would also have built-in voting ability for features like sending a transaction, adding
+members and removing members, and may even provide for Liquid Democracy-style vote delegation (ie.
+anyone can assign someone to vote for them, and assignment is transitive so if A assigns B and B assigns C
+then C determines A's vote). This design would allow the DO to grow organically as a decentralized
+community, allowing people to eventually delegate the task of filtering out who is a member to specialists,
+although unlike in the "current system" specialists can easily pop in and out of existence over time as
+individual community members change their alignments.
+An alternative model is for a decentralized corporation, where any account can have zero or more shares, and
+two thirds of the shares are required to make a decision. A complete skeleton would involve asset
+management functionality, the ability to make an offer to buy or sell shares, and the ability to accept offers
+(preferably with an order-matching mechanism inside the contract). Delegation would also exist Liquid
+Democracy-style, generalizing the concept of a "board of directors".
+In the future, more advanced mechanisms for organizational governance may be implemented; it is at this
+point that a decentralized organization (DO) can start to be described as a decentralized autonomous
+organization (DAO). The difference between a DO and a DAO is fuzzy, but the general dividing line is whether
+the governance is generally carried out via a political-like process or an “automatic” process; a good intuitive
+test is the “no common language” criterion: can the organization still function if no two members spoke the
+same language? Clearly, a simple traditional shareholder-style corporation would fail, whereas something like
+the Bitcoin protocol would be much more likely to succeed. Robin Hanson’s futarchy, a mechanism for
+organizational governance via prediction markets, is a good example of what truly “autonomous” governance
+might look like. Note that one should not necessarily assume that all DAOs are superior to all DOs; automation
+is simply a paradigm that is likely to have have very large benefits in certain particular places and may not be
+practical in others, and many semi-DAOs are also likely to exist.
 
 \section{Particularidades.}
 
