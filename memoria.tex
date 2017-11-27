@@ -110,10 +110,9 @@ Al usar ethereum, la ‘app’ no requiere ninguna entidad para almacenar y cont
 El objetivo del lenguaje de programación ‘Turing-completo’ de ethereum es permitir a los
 desarrolladores escribir más programas (que los que permite la linea de comandos de bitcoin) en los que las transacciones en la cadena de bloques puedan gobernar y automatizar resultados específicos. Tengamos en cuenta que un lenguaj turing-completo es capaz de generar (en teoría) los mismos programas que son desarrollables c++. Esta flexibilidad que ofrece ethereum es  la innovacioń fundamental de ethereum sobre otras plataformas basadas en protocolo bitcoin.\\
 
-\subsubsection{Bitcoin como sistema de transición de estados.}
+\subsubsection{Tecnología como sistema de transición de estados.}
 
-Desde un punto de vista técnico, el ledger de Bitcoin puede verse como un sistema de
-transición de estados, donde hay un estado que consiste en el estado de propiedad de todos los bitcoins existentes además de una función de transición de estado que toma un estado y una transacción y genera un nuevo estado que es el resultado. De este modo obtendríamos un autómata, y además al haber un número finitio de bitcoin, podemos decir que es finito en teoría (aunque no en práctica, pues la cantidad de variaciones de la red es casi inabarcable).\\
+Desde un punto de vista técnico, el ledger de los sitemas de cadena e bloques puede verse como un sistema de transición de estados, donde hay un estado que consiste en el estado de propiedad de todos los bitcoins existentes además de una función de transición de estado que toma un estado y una transacción y genera un nuevo estado que es el resultado. De este modo obtendríamos un autómata, y además al haber un número finitio de bitcoin, podemos decir que es finito en teoría (aunque no en práctica, pues la cantidad de variaciones de la red es casi inabarcable).\\
 
 En un sistema bancario estándar, por ejemplo, el estado es una hoja de balance, una transacción es una petición para mover una determinada cantidad de dinero de “A” a “B”, y la función de transición de estado reduce esa cantidad de dinero en la cuenta de “A” y la incrementa en la cuenta de “B”. Si, en primer lugar, la cuenta de “A” tiene una cantidad menor a la indicada, la función de transición de estado devuelve un error. Por lo tanto, podría definirse formalmente:
 \begin{lstlisting}

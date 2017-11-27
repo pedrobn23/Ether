@@ -8,7 +8,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 
-%Para linea del tiempo
+\usepackage{listings}
 
 % Configuración básica del tema
 \metroset{
@@ -86,11 +86,10 @@
 \end{frame}
 
 \section{ Introducción. }
-
+\subsection{intro} %Ponemos la subseccion para que nos aparezcan los circulos de progesion
 \begin{frame}{Objetivo.}
-	Tras el boom de las cadena de bloques, las criptodivisas simples quedaban cortas, y con el objetivo de dar más funcionalidad a esta tecnología, nació ethereum.
+	Tras el boom de las cadena de bloques, las criptodivisas simples quedaban cortas y, con el objetivo de dar más funcionalidad a esta tecnología, nació ethereum.
 \end{frame}
-
 
 \begin{frame}{ Historia. }
 \scalebox{1}{
@@ -110,12 +109,55 @@
 \end{frame}
 
 \section{ Ethereum. }
+\subsection{ethereum. }
+\begin{frame}
+	Una vez vemos el objetivo que tiene este sistema, vamos a profundizar en detalles de su funcionamiento,
+\end{frame}
 
-\subsection{ Funcionamiento }
+\begin{frame}{ Bitcoin como sistema de transición de estados. }
+Podemos ver el la cadena como un sistema de transición de estados. Esto Seá importante para ver las posibilidades de esta entidad.
+\begin{itemize}
+	\item Los estados serían el conjunto de la información escrita en cada bloque.
+  	\item Tendríamos una  función de transicion: $ APPLY( S , TX ) \to S'\ o\ ERROR$
+\end{itemize}
+\end{frame}
 
-\subsubsection{ Bitcoin como sistema de transición de estados. }
-\subsubsection{ Cadena de Bloques de Ethereum. }
-\subsubsection{ Cuentas. }
+
+\begin{frame}{ Bitcoin como sistema de transición de estados. }
+Ejemplifiquemos el uso de este sistema.
+\begin{itemize}
+	\item $ APPLY( \{ Ana: 50 , Pedro: 50 \} , \text{''enviar 20 de Ana a Pedro" )} $
+  { Ana: 30 , Pedro: 70 }
+  \item  $  APPLY( { Ana: 50 , Pedro: 50 } , \text{''enviar 70 de Ana a Pedro" )} $
+  ERROR
+\end{itemize}
+\end{frame}
+
+
+\begin{frame} {Cadena de bloques.}
+	  \begin{columns}
+   \column{.5\textwidth}
+
+     
+\includegraphics[height=5cm]{./images/blockchain.png}
+
+
+   \column{.5\textwidth}
+
+Joer mira que sinverguenza
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{ Cuentas. }
+	Las cuentas son las entidades base de ethereum, y contiene 4 campos:
+	\begin{itemize}
+	\item Nonce.
+	\item Valor.
+	\item Código de Contrato.
+	\item Almacenamiento.
+	\end{itemize}
+\end{frame}
 \subsubsection{ Máquina Virtual de Ethereum . }
 \subsubsection{ Mensajes, Transacciones y estado de transición. }
 \subsubsection{ Contratos inteligentes. }
@@ -125,12 +167,22 @@
 \subsubsection{ Softfork. }
 
 \section { Aplicaciones. }
-\subsection{ Sistemas de Token. }
-\subsection{ Sistema de identidad. }
-\subsection{ Decentralized File Storage. }
-\subsection{ Organizaciones descentralizadas. }
+\subsection{aplicaciones. }
+
+\begin{frame}{ Sistemas de Token. }
+	
+\includegraphics[height=17.5cm]{./images/alg1.png}
+\end{frame}
+\begin{frame}{ Sistema de identidad. }
+
+\includegraphics[height=17.5cm]{./images/alg2.png}
+\end{frame}
+\begin{frame}{ Más aplicaciones. }
+	¡En el github \url{https://github.com/pedrobn23/Ether} tenemos más, mirenlo para profundizar vuestro saber!
+\end{frame}
 
 \section{ Particularidades. }
+\subsection{PArticularidades}
 \subsection{ Ether. }
 \subsection{ DoS attack. }
 \subsection{ Escalabilidad. }
