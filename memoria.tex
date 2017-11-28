@@ -39,7 +39,7 @@
   \centering
   
   \vspace{10cm}
-  \includegraphics[width=0.6\textwidth]{images/portada.png}\par\vspace{1cm}
+  \includegraphics[width=0.6\textwidth]{./images/portada.png}\par\vspace{1cm}
                   {\scshape\large Fundamentos de Redes \par} \vspace{1cm}
                   \vspace{0.4cm}
                          {\large\itshape Memoria de la exposición\\}
@@ -376,9 +376,19 @@ crowdfunding en 2014. Otros 12 millones de ether fueron destinados a la Fundaci�
 
 
 \subsection{DoS attack.}
-Dado el incidente del DAO, hemos de explicar en que consiste este ataque hecho a la red.		 \\
-\url{https://en.wikipedia.org/wiki/Denial-of-service_attack}\\
-Esto se solvento hipotéticamente a finales de 2016 al mejorar la denfensa en este tipo de ataques. \textcolor{red}{investigar como lo han hecho}
+Dado el incidente del DAO, nos dispondremos a explicar en qué consiste este ataque que sufrió la red de Ethereum.\\
+
+En términos generales, un ‘denial-of-service attack’ (DoS attack) es un ciberataque en el que el autor del mismo tiene el objetivo de inhabilitar una máquina o recurso de red de cara a sus usuarios interrumpiendo temporal o indefinidamente los servicios de un host conectado a internet. Típicamente, el DoS se realiza ‘inundando’ la máquina o recurso objetivo con peticiones superfluas en un intento de sobrecargar el sistema y evitar que se cumplan todas o parte de las peticiones legítimas.\\
+
+En un ataque DoS distribuido (DDoS), el tráfico entrante que inunda a la víctima proviene de muchas fuentes distintas, lo que efectivamente hace que sea imposible detener el ataque bloqueando una simple fuente.\\
+
+Un ataque DoS o DDoS podría compararse a un grupo de personas amontonándose en la puerta de entrada a una tienda o negocio, impidiendo el paso de un grupo de personas legítimas e interrumpiendo el funcionamiento normal. Nos centraremos en analizar los ataques DDoS. DoS DISTRIBUIDO (DDoS) Un DDoS es un ciberataque en el que el autor utiliza más de una dirección IP única (a menudo miles de ellas). Como hemos comentado anteriormente, el tráfico entrante que pretende inundar el sistema se origina en diversas fuentes, por lo que es imposible detener el ataque con un filtrado de ingreso para asegurar que los paquetes que entran son en realidad de las redes de las que dicen ser originados. A su vez, hace que sea muy complicado distinguir entre tráfico de un usuario legítimo y tráfico de un ataque cuando está extendido por tantos puntos de origen. Muchos de los ataques implican la falsificación de las direcciones IP del remitente (IP spoofing o suplantación de IP) como una alternativa o aumento de un DDoS, así como para conseguir que no se pueda identificar fácilmente la localización de las máquinas atacantes ni derrotarlas.
+
+\subsubsection{Técnicas de ataque}
+Un ataque DDoS es normalmente el resultado de sistemas múltiples comprometidos, por ejemplo, una botnet, inundando el sistema objetivo con tráfico. Una botnet es lo que viene siendo una red zombie de ordenadores programados para recibir comandos sin el conocimiento de los propietarios. Cuando un servidor se sobrecarga con conexiones, las nuevas conexiones ya no pueden aceptarse. Las principales ventajas para el atacante de usar un ataque DDoS es que múltiples máquinas pueden generar mas tráfico de ataque que una sola máquina, al igual que es más difícil desconectar todas las máquinas, y que el comportamiento de cada máquina atacante puede ser muy sigiloso, haciendo aún más complicado rastrearlas y apagarlas. Estas ventajas desafían a los mecanismos de defensa.\\
+
+En 2015, algunas de las botnets DDoS crecieron en prominencia, tomando como objetivo
+instituciones financieras. Los ciber-extorsionistas normalmente empiezan con un ataque de bajo nivel y un aviso de que un ataque mayor va a llevarse a cabo si no se paga un rescate en Bitcoin.\\
 
 \subsection{Escalabilidad}
 \label{sec:escalabilidad}
