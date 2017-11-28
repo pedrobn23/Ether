@@ -162,6 +162,7 @@ Con ethereum, cada vez que se usa un programa, una red de miles de computadores 
 
 \begin{frame}{ Mensajes, Transacciones y estado de transición. }
 
+Los mensajes en ethereum son parecidos de cierto modo a las transacciones de en otros  sistemas de cadena de bloques, pero  con algunas caracteristicas llamativas. Un mensaje puede ser creado tanto por una entidad externa como por un contrato, los mensajes pueden contener datos o, si el mensaje es recibido por un contrato, este tiene la opcion de responder. Esto implica que un mensaje en etherum puede toar el aspecto de función.\\
 \end{frame}
 
 
@@ -169,11 +170,18 @@ Con ethereum, cada vez que se usa un programa, una red de miles de computadores 
 Un contrato inteligente (en inglés Smart contract) es un programa informático que facilita, asegura, hace cumplir y ejecuta acuerdos registrados entre dos o más partes (por ejemplo personas u organizaciones). Como tales ellos les ayudarían en la negociación y definición de tales acuerdos que causarán que ciertas acciones sucedan como resultado de que se cumplan una serie de condiciones específicas.\\
 \end{frame}
 
+\begin{frame}{ Minería y Prueba de Trabajo. }
+	
+La minería juega un papel importante en asegurarse como funciona ethereum, pero de forma subliminal. Además del objetivo de generar nuevos ether sin la necesidad de un banco, pero esta no es su único rol. Normalmente, es la compañía que centraliza las operaciones (como un banco) la que se asegura de mantener resgistros adecuados de los datos. Sin embargo, los sistemas de cadena de bloques introducen una nuevo modo de mantener el resgistro de acciones, cuando es la red entera la que se asegura de mantener el registro de transacciones, en lugar de un intermediario, y las anota en un registro público.\\
+\begin{center}
+\hfill\includegraphics[height=1.5cm]{./images/miner.png}
+\end{center}
+\end{frame}
 
-\subsubsection{ Minería y Prueba de Trabajo. }
-\subsubsection{ Hardfork y Sotfork. }
-\subsubsection{ Hardfork. }
-\subsubsection{ Softfork. }
+\begin{frame}{ Hardfork y Sotfork. }
+El término fork hace referencia al despliegue de cambios en el código de la cadena de bloques. La bifurcaión sucede cuando el equipo detras de ethreum quiere implantr cambios en la estructura por diversos motivos. Como la cadena de bloques es una estructura de datos descentralizada, hay diferentes, esto provoca que estas situcaciones generen cadenas de bloques alternativas. Es lo que se conoce como bifurcación de la Blockchain, y aquí es donde entran en juego los conceptos de hardfork y softfork.\\
+\end{frame}
+
 
 \section { Aplicaciones. }
 \subsection{aplicaciones. }
@@ -208,7 +216,8 @@ Aunque nadie sea dueño de ethereum, el sistema que respalda esta funcionalidad 
 \end{frame}
 
 \begin{frame}{ DoS attack. }
-
+	En el pasado se han visto problemas con la capacidad de ethereum para soportar este tipo de ataques, por ejemplo en la compañía \underline{bancor}. Estos problemas están relacionados con la capacidad de escalabilidad de ethereum. Por ello, vamos a explicar en que consiste este tipo de ataques.\\
+	\url{https://motherboard.vice.com/en_us/article/newk7m/the-ethereum-network-is-ddos-ing-itself}
 \end{frame}
 
 \begin{frame}{ Escalabilidad. }
@@ -234,10 +243,4 @@ Actualmente, las dos mining pools principales indirectamente controlan aproximad
   ¡Muchas gracias!
 \end{frame}
 \end{document}
-
-%\seccion{estructura.tex}  % Estructura
-%\seccion{aspecto.tex}     % Aspecto
-%\seccion{otros.tex}       % Otros objetos
-%\seccion{enlaces.tex}     % Enlaces de interés
-
 \end{document}
