@@ -10,6 +10,9 @@
 
 \usepackage{listings}
 
+
+\usepackage{graphicx,wrapfig,lipsum}
+
 % Configuración básica del tema
 \metroset{
   % tema oscuro ('dark') o claro ('light'). No tiene efecto al usar la
@@ -155,13 +158,18 @@ diseñadas para evitar su modificación una vez que un dato ha sido publicado us
 \begin{frame}{ Máquina Virtual de Ethereum . }
 Con ethereum, cada vez que se usa un programa, una red de miles de computadores lo procesa. 
 \includegraphics[width=\textwidth]{./images/EVM.png}\\Los contratos escritos en un lenguaje de programación específico de contrato inteligente se compilan en ‘bytecode’, lo que una prestación llamada ‘ethereum virtual machine’ (EVM) puede leer y ejecutar.
-
 \end{frame}
 
 \begin{frame}{ Mensajes, Transacciones y estado de transición. }
 
 \end{frame}
-\subsubsection{ Contratos inteligentes. }
+
+
+\begin{frame}{ Contratos inteligentes. }
+Un contrato inteligente (en inglés Smart contract) es un programa informático que facilita, asegura, hace cumplir y ejecuta acuerdos registrados entre dos o más partes (por ejemplo personas u organizaciones). Como tales ellos les ayudarían en la negociación y definición de tales acuerdos que causarán que ciertas acciones sucedan como resultado de que se cumplan una serie de condiciones específicas.\\
+\end{frame}
+
+
 \subsubsection{ Minería y Prueba de Trabajo. }
 \subsubsection{ Hardfork y Sotfork. }
 \subsubsection{ Hardfork. }
@@ -189,19 +197,37 @@ Con ethereum, cada vez que se usa un programa, una red de miles de computadores 
 
 	\begin{columns}
    \column{.5\textwidth}
-
+Aunque nadie sea dueño de ethereum, el sistema que respalda esta funcionalidad no es gratis. Mejor dicho, la red necesita el ‘ether’, una pieza única de código que puede usarse para pagar por los recursos computacionales necesarios para ejecutar una aplicación o programa. El ether no es más que la divisa utilizada en ethereum para las transacciones.
 
    \column{.5\textwidth}
    
+\includegraphics[width=0.9\textwidth]{./images/ETH-512.png}
 
 \end{columns}
 
 \end{frame}
-\subsection{ DoS attack. }
-\subsection{ Escalabilidad. }
-\subsubsection{ Ataque 51 \%. }
-\subsection{ Minería centralizada .}
 
+\begin{frame}{ DoS attack. }
+
+\end{frame}
+
+\begin{frame}{ Escalabilidad. }
+	\begin{columns}
+   \column{.5\textwidth}
+
+\includegraphics[width=\textwidth]{./images/scalability.png}
+
+   \column{.5\textwidth}
+   
+Una preocupación común acerca de Ethereum es el tema de la escalabilidad. Ethereum sufre el defecto de que cada transacción tiene que ser procesada por cada nodo en la red.
+
+\end{columns}
+
+\end{frame}
+\begin{frame}{ Minería centralizada .}
+Actualmente, las dos mining pools principales indirectamente controlan aproximadamente el 50\% del poder de procesamiento en la red de Bitcoin, aunque esto está mitigado por el hecho de que los mineros pueden cambiarse a otras mining pools si una pool o coalición pretende llevar a cabo un \underline{\textbf{ataque del 51\%}}. El propósito actual en Ethereum es usar un algoritmo de minería basado en generar aleatoriamente una única función hash por cada 1000 ‘nonces’, usando un rango de computación lo suficientemente amplio para eliminar el beneficio del hardware especializado.
+
+\end{frame}
 \section{Conclusiones}
 \subsection{Conclusiones}
 \begin{frame}[standout]
