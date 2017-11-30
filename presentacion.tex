@@ -106,7 +106,7 @@
 2016 & Dos hard-fork más.\\
 2017 & Refuerzo de la seguridad.\\
 2017 & Prohibición de las ICO en China.\\
-2017 & Exposición de Fundamentos de Redes\\
+2017 & Exposición de Fundamentos de Redes.\\
 
 \end{tabular}}
 \end{frame}
@@ -114,14 +114,14 @@
 \section{ Ethereum. }
 \subsection{ethereum. }
 \begin{frame}
-	Una vez vemos el objetivo que tiene este sistema, vamos a profundizar en detalles de su funcionamiento,
+	Una vez vemos el objetivo que tiene este sistema, vamos a profundizar en detalles de su funcionamiento.
 \end{frame}
 
 \begin{frame}{ Bitcoin como sistema de transición de estados. }
 Podemos ver la cadena como un sistema de transición de estados. Esto Será importante para ver las posibilidades de esta entidad.
 \begin{itemize}
 	\item Los estados serían el conjunto de la información escrita en cada bloque.
-  	\item Tendríamos una  función de transicion: $ APPLY( S , TX ) \to S'\ o\ ERROR$
+  	\item Tendríamos una  función de transición: $ APPLY( S , TX ) \to S'\ o\ ERROR$
 \end{itemize}
 \end{frame}
 
@@ -131,7 +131,7 @@ Ejemplifiquemos el uso de este sistema.
 \begin{itemize}
 	\item $ APPLY( \{ Ana: 50 , Pedro: 50 \} , \text{''enviar 20 de Ana a Pedro" )} $
   { Ana: 30 , Pedro: 70 }
-  \item  $  APPLY( { Ana: 50 , Pedro: 50 } , \text{''enviar 70 de Ana a Pedro" )} $
+  \item  $  APPLY( \{ Ana: 50 , Pedro: 50 \} , \text{''enviar 70 de Ana a Pedro" )} $
   ERROR
 \end{itemize}
 \end{frame}
@@ -178,8 +178,8 @@ La minería juega un papel importante en asegurarse como funciona ethereum, pero
 \end{center}
 \end{frame}
 
-\begin{frame}{ Hardfork y Sotfork. }
-El término fork hace referencia al despliegue de cambios en el código de la cadena de bloques. La bifurcaión sucede cuando el equipo detras de ethreum quiere implantr cambios en la estructura por diversos motivos. Como la cadena de bloques es una estructura de datos descentralizada, hay diferentes, esto provoca que estas situcaciones generen cadenas de bloques alternativas. Es lo que se conoce como bifurcación de la Blockchain, y aquí es donde entran en juego los conceptos de hardfork y softfork.\\
+\begin{frame}{ Hardfork y Softfork. }
+El término fork hace referencia al despliegue de cambios en el código de la cadena de bloques. La bifurcaión sucede cuando el equipo detras de ethreum quiere implantar cambios en la estructura por diversos motivos. Como la cadena de bloques es una estructura de datos descentralizada, hay diferentes, esto provoca que estas situcaciones generen cadenas de bloques alternativas. Es lo que se conoce como bifurcación de la Blockchain, y aquí es donde entran en juego los conceptos de hardfork y softfork.\\
 \end{frame}
 
 
