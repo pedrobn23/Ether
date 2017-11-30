@@ -1,17 +1,18 @@
 ---
 author:
     - Pedro Bonilla Nadal
-title: Coloreando tu propia criptodivisa con Ethereum.
+title: Contratos con Ethereum.
 ---
 
 # Primeros Pasos
 
 ## Instalación
 
-Antes de empezar con la implementación, hemos de tener instalada la linea de comandos de ethereum. Puedes encontrar una guía de instalación en inglés y más completa  [aquí](https://ethereum.org/cli) (pincha).
+Antes de empezar con la implementación, hemos de tener instalada la linea de comandos de ethereum. Puedes encontrar una guía de instalación en inglés y más completa  [aquí](https://ethereum.org/cli).
 
  Hay tres implementaciones fundamentales hechas para ethereum: Geth, Eth y Pyethapp. La primera de esta se implemento en GO, la segunda en C++ y la tercera en Python, tres de los lenguajes con más fuerza de los últimos tiempos. Existen otras implementaciones de ethereum hechas en lenguajes como RUST, Haskell, javascript entre otras muchas. Nosotros nos centraremos en la primeras. Aun así, explicaremos como instalar las dos primeras, pués se recomienda usar varias implementaciones por razones de fiabilidad de la aplicación instalada.
-n
+
+
 ### Geth
 
  Para instalar geth en **ubuntu** escriba en su terminal:
@@ -148,7 +149,13 @@ geth --datadir ~/frontier/00 --solc <directorio>  --natspec
 
 ### Segunda opción: compilación online
 
-Tenemos un compilador online en el [repositorio oficial de github](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.18+commit.9cf6e910.js).
+Tenemos un compilador online en el [repositorio oficial de github](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.18+commit.9cf6e910.js) .
+
+
+### Tercera opción: node solc
+
+Se nos ofrece en su repositorio una [guía de instalación](https://github.com/ethereum/solc-js) con npm. 
+
 
 
 ## Primer ejemplo de contrato.
@@ -161,8 +168,34 @@ contract = eth.compile.solidity(source).test
 
 ```
 
-Si estás usando una versión que no tiene solC instalado, o que ha deprecado este servicio
+y obtenemos como repuesta el código compilado `605280600...`. Como podemos observar, igual que el lenguaje máquina es poco legible.
+
 
 ## Contrato "Hola mundo"
 
-Vamos a escribir ahora el ejemplo clásico de todo lenguaje de programación para que se pueda saber la base de como hacer un contrato inteligente, con la funcionalidad mínima de escribir por pantalla "hola mundo". Como bien sabemos por la memoria, con un contrato se puede hacer basicamente cualquier cosa, por el lenguaje turing completo.
+Vamos a escribir ahora el ejemplo clásico de todo lenguaje de programación para que se pueda saber la base de como hacer un contrato inteligente, con la funcionalidad mínima de escribir por pantalla "hola mundo". Como bien sabemos por la memoria, con un contrato se puede hacer basicamente cualquier cosa, por el lenguaje turing completo. Aquí ponemos el código.
+
+```javascript
+contract mortal {
+    address owner;
+	
+	function mortal() { owner = msg.sender; }
+	function kill() { if (msg.sender == owner) selfdestruct(owner); }
+}
+
+contract greeter is mortal {
+	string greeting;
+								    
+	
+	function greeter(string _greeting) public {
+		greeting = _greeting;
+	}
+	
+
+	function greet() constant returns (string) {
+		return greeting;
+	}
+}
+```
+
+Después compilamos este código y lo pasamos a binario.
