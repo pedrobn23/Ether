@@ -1,4 +1,3 @@
----
 author:
     - Pedro Bonilla Nadal
 title: Contratos con Ethereum.
@@ -198,4 +197,14 @@ contract greeter is mortal {
 }
 ```
 
-Después compilamos este código y lo pasamos a binario.
+Compilamos el código (aquí usamos la versión online) y copiamos el web3 development a un nuevo archivo js, y lo ejecutamos con 
+
+```bash
+loadScript(<tuArchivo.js>)
+```
+
+A veces es necesario permitir la carga con:
+
+```javascript
+personal.unlockAccount(web3.eth.accounts[0], "yourPassword")
+```
