@@ -11,10 +11,10 @@ title: Coloreando tu propia criptodivisa con Ethereum.
 Antes de empezar con la implementación, hemos de tener instalada la linea de comandos de ethereum. Puedes encontrar una guía de instalación en inglés y más completa  [aquí](https://ethereum.org/cli) (pincha).
 
  Hay tres implementaciones fundamentales hechas para ethereum: Geth, Eth y Pyethapp. La primera de esta se implemento en GO, la segunda en C++ y la tercera en Python, tres de los lenguajes con más fuerza de los últimos tiempos. Existen otras implementaciones de ethereum hechas en lenguajes como RUST, Haskell, javascript entre otras muchas. Nosotros nos centraremos en la primeras. Aun así, explicaremos como instalar las dos primeras, pués se recomienda usar varias implementaciones por razones de fiabilidad de la aplicación instalada.
-
+n
 ### Geth
 
- Para instalar geth en **Linux** escriba en su terminal:
+ Para instalar geth en **ubuntu** escriba en su terminal:
 
 ```bash
     sudo apt-get install software-properties-common
@@ -28,7 +28,7 @@ Antes de empezar con la implementación, hemos de tener instalada la linea de co
 ### Eth
 
 
- Para instalar eth en **Linux** escriba en su terminal:
+ Para instalar eth en **ubuntu** escriba en su terminal:
 
 ```bash
     sudo apt-get install cpp-ethereum
@@ -115,11 +115,53 @@ Para revisar todos los balances podemos utilizar esta función, la cual además 
 ```
 # Contratos y transacciones
 
-Ahora tenemos que entender como hacemos un envio simple de ether. Solo consistiría en escribir:
+Ahora, antes de nada, tenemos que entender como hacemos un envio simple de ether. Solo consistiría en escribir:
 
 ```javascript
-    eth.sendTransaction({from: 'cuenta1', to: 'cuenta2', value: web3.toWei(1, "moneda")})
+    eth.sendTransaction({from: <cuenta1>, to:
+        <cuenta2>, value: web3.toWei(<cantidad>, <moneda>)})
 ```
+
+Los envíos se hacen en wei, la mínima divisa aceptada. Por ello escribimos la cantidad de una moneda que queremos enviar y la pasamos a esta con toWei. (10^18 wei = 1 Ether = 0.044 BTC = 445USD$ a 30/11/17 11:09 a.m.)
+
+## Compilando un contrato
+
+Los contratos  solo con aceptados en los codigos binarios especificos de Ethereum (también llamado bytecode). De todos modos estos suelen estar escritos en algún lenguaje de alto nivel como solidity
+
+
+### Primera opción: Terminal (deprecated?)
+```bash
+    sudo apt-get install solidity
+```
+
+Después los compilamos a bytecode desde la terminal de geth con: 
+
+```javascript
+eth.compile.solidity(<tu_programa>)
+```
+
+Por último, si queremos, podemos especificar la ubicación del compilador con:
+
+```bash
+geth --datadir ~/frontier/00 --solc <directorio>  --natspec
+```
+
+### Segunda opción: compilación online
+
+Tenemos un compilador online en el [repositorio oficial de github](https://ethereum.github.io/browser-solidity/#version=soljson-v0.4.18+commit.9cf6e910.js).
+
+
+## Primer ejemplo de contrato.
+
+Tomemos ahora este primer ejemplo de contrato, que solo consiste en una función que pide un número a y devuelve a*7.
+
+```javascript
+source = "contract test { function multiply(uint a) returns(uint d) { return a * 7; } }"
+contract = eth.compile.solidity(source).test
+
+```
+
+Si estás usando una versión que no tiene solC instalado, o que ha deprecado este servicio
 
 ## Contrato "Hola mundo"
 
